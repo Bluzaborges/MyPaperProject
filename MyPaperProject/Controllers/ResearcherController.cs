@@ -10,6 +10,11 @@ namespace MyPaperProject.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult RegisterResearcher([FromBody] Researcher researcher)
         {
