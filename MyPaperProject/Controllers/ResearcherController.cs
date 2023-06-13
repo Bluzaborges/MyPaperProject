@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyPaperProject.Database;
 using MyPaperProject.Models;
 
 namespace MyPaperProject.Controllers
@@ -12,6 +13,12 @@ namespace MyPaperProject.Controllers
 
         public IActionResult Register()
         {
+            DbArea dbArea= new DbArea();
+            DbSubarea dbSubarea= new DbSubarea();
+
+            ViewBag.Areas = dbArea.GetAllAreas();
+            ViewBag.Subareas = dbSubarea.GetAllSubareas();
+
             return View();
         }
 
@@ -20,5 +27,16 @@ namespace MyPaperProject.Controllers
         {
             return Json(researcher);
         }
-    }
+
+        [HttpPost]
+		public JsonResult GetAllSubareas()
+		{
+
+			DbSubarea dbSubarea = new DbSubarea();
+
+            List<Subarea> subareas = dbSubarea.GetAllSubareas();
+
+			return Json(subareas);
+		}
+	}
 }
