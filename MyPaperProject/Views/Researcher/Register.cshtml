@@ -20,19 +20,29 @@
 	<div class="card-body">
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Nome<span class="text-danger">*</span></label>
-			<div class="col-md-10 col-sm-12">
+			<div class="col-md-8 col-sm-12">
 				<input id="researcher-name" type="text" class="form-control" placeholder="Digite o nome" />
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">CPF<span class="text-danger">*</span></label>
-			<div class="col-md-10 col-sm-12">
+			<div class="col-md-8 col-sm-12">
 				<input id="researcher-document" type="text" class="form-control" placeholder="Digite o CPF" />
 			</div>
 		</div>
 		<div class="form-group row">
+			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Tipo</label>
+			<div class="col-md-8 col-sm-12">
+				<select class="form-control select2" id="select-type" name="param">
+					<option value="1">Aluno</option>
+					<option value="2">Docente</option>
+					<option value="3">Funcionário</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Área do conhecimento</label>
-			<div class="col-md-10 col-sm-12">
+			<div class="col-md-8 col-sm-12">
 				<select class="form-control select2" id="select-area" name="param" multiple="multiple">
 					@foreach (Area area in ViewBag.Areas)
 					{
@@ -43,7 +53,7 @@
 		</div>
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Subárea do conhecimento</label>
-			<div class="col-md-10 col-sm-12">
+			<div class="col-md-8 col-sm-12">
 				<select class="form-control select2" id="select-subarea" name="param" multiple="multiple">
 					
 				</select>
