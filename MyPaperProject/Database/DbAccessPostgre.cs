@@ -3,7 +3,7 @@ using Npgsql;
 
 namespace MyPaperProject.Database
 {
-    public class DbAccess
+    public class DbAccessPostgre
     {
         public NpgsqlConnection OpenConnection()
         {

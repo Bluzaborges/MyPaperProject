@@ -1,10 +1,11 @@
-﻿using MyPaperProject.Models;
-using MyPaperProject.Global;
+﻿using MyPaperProject.Global;
+using MyPaperProject.Models;
+using MyPaperProject.Models.Repositories;
 using Npgsql;
 
 namespace MyPaperProject.Database
 {
-	public class DbArea
+	public class DbAreaPostgre : IAreaRepository
 	{
 		public List<Area> GetAllAreas()
 		{
@@ -12,7 +13,7 @@ namespace MyPaperProject.Database
 
 			try
 			{
-				DbAccess db = new DbAccess();
+				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{

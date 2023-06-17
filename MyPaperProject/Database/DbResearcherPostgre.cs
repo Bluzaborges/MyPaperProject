@@ -1,10 +1,11 @@
 ﻿using MyPaperProject.Global;
 using MyPaperProject.Models;
+using MyPaperProject.Models.Repositories;
 using Npgsql;
 
 namespace MyPaperProject.Database
 {
-	public class DbResearcher
+	public class DbResearcherPostgre : IResearcherRepository
 	{
 		public bool ResearcherExists(string name, string cpf)
 		{
@@ -13,7 +14,7 @@ namespace MyPaperProject.Database
 
 			try
 			{
-				DbAccess db = new DbAccess();
+				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
@@ -46,7 +47,7 @@ namespace MyPaperProject.Database
 
 			try
 			{
-				DbAccess db = new DbAccess();
+				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
@@ -82,7 +83,7 @@ namespace MyPaperProject.Database
 
 			try
 			{
-				DbAccess db = new DbAccess();
+				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
@@ -114,7 +115,7 @@ namespace MyPaperProject.Database
 
 			try
 			{
-				DbAccess db = new DbAccess();
+				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{

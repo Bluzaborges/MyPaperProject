@@ -10,7 +10,7 @@ namespace MyPaperProject.Global
         {
             try
             {
-                DbAccess db = new DbAccess();
+                DbAccessPostgre db = new DbAccessPostgre();
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {

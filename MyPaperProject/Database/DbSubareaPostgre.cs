@@ -1,10 +1,11 @@
 ﻿using MyPaperProject.Global;
 using MyPaperProject.Models;
+using MyPaperProject.Models.Repositories;
 using Npgsql;
 
 namespace MyPaperProject.Database
 {
-	public class DbSubarea
+	public class DbSubareaPostgre : ISubareaRepository
 	{
 		public List<Subarea> GetAllSubareas()
 		{
@@ -12,7 +13,7 @@ namespace MyPaperProject.Database
 
 			try
 			{
-				DbAccess db = new DbAccess();
+				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{

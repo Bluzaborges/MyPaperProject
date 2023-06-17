@@ -14,8 +14,8 @@ namespace MyPaperProject.Controllers
 
         public IActionResult Register()
         {
-            DbArea dbArea= new DbArea();
-            DbSubarea dbSubarea= new DbSubarea();
+            DbAreaPostgre dbArea= new DbAreaPostgre();
+            DbSubareaPostgre dbSubarea= new DbSubareaPostgre();
 
             ViewBag.Areas = dbArea.GetAllAreas();
 
@@ -25,7 +25,7 @@ namespace MyPaperProject.Controllers
         [HttpPost]
         public JsonResult RegisterResearcher([FromBody] Researcher researcher)
         {
-            DbResearcher dbResearcher = new DbResearcher();
+            DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
             bool result = false;
             int idResearcher = 0;
 
@@ -72,7 +72,7 @@ namespace MyPaperProject.Controllers
         [HttpPost]
         public JsonResult GetAllAreas()
         {
-            DbArea dbArea = new DbArea();
+            DbAreaPostgre dbArea = new DbAreaPostgre();
 
             List<Area> areas = dbArea.GetAllAreas();
 
@@ -83,7 +83,7 @@ namespace MyPaperProject.Controllers
 		public JsonResult GetAllSubareas()
 		{
 
-			DbSubarea dbSubarea = new DbSubarea();
+			DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
 
             List<Subarea> subareas = dbSubarea.GetAllSubareas();
 

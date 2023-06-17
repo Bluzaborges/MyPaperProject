@@ -19,10 +19,29 @@ CREATE TABLE IF NOT EXISTS subareas (
 	name VARCHAR(100) NOT NULL
 );
 
--- Inserindo dados na tabela 'areas'
-INSERT INTO areas (name) VALUES ('Matemática');
+DROP TABLE IF EXISTS researchers;
+CREATE TABLE researchers (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(150) NOT NULL,
+	cpf VARCHAR(11) NOT NULL,
+	type VARCHAR(15) NOT NULL
+);
 
--- Inserindo dados na tabela 'subareas'
+DROP TABLE IF EXISTS researchers_areas;
+CREATE TABLE researchers_areas (
+	id SERIAL PRIMARY KEY,
+	id_researcher INTEGER REFERENCES researchers,
+	id_area INTEGER REFERENCES areas
+);
+
+DROP TABLE IF EXISTS researchers_subareas;
+CREATE TABLE researchers_subareas (
+	id SERIAL PRIMARY KEY,
+	id_researcher INTEGER REFERENCES researchers,
+	id_subarea INTEGER REFERENCES subareas
+);
+
+INSERT INTO areas (name) VALUES ('Matemática');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Álgebra');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Conjuntos');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Lógica matemática');
@@ -49,10 +68,7 @@ INSERT INTO subareas (id_area, name) VALUES (1, 'Física matemática');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Análise numérica');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Matemática discreta e combinatória');
 
--- Inserindo dados na tabela 'areas'
 INSERT INTO areas (name) VALUES ('Probabilidade e Estatística');
-
--- Inserindo dados na tabela 'subareas'
 INSERT INTO subareas (id_area, name) VALUES (2, 'Teoria Geral e Fundamentos da Probabilidade');
 INSERT INTO subareas (id_area, name) VALUES (2, 'Teoria Geral e Processos Estocásticos');
 INSERT INTO subareas (id_area, name) VALUES (2, 'Teoremas de Limite');
@@ -70,11 +86,7 @@ INSERT INTO subareas (id_area, name) VALUES (2, 'Planejamento de Experimentos');
 INSERT INTO subareas (id_area, name) VALUES (2, 'Análise de Dados');
 INSERT INTO subareas (id_area, name) VALUES (2, 'Probabilidade e Estatística Aplicadas');
 
--- Inserindo dados na tabela 'areas'
 INSERT INTO areas (name) VALUES ('Ciência da Computação');
-INSERT INTO areas (name) VALUES ('Astronomia');
-
--- Inserindo dados na tabela 'subareas'
 INSERT INTO subareas (id_area, name) VALUES (3, 'Teoria da Computação');
 INSERT INTO subareas (id_area, name) VALUES (3, 'Computabilidade e Modelos de Computação');
 INSERT INTO subareas (id_area, name) VALUES (3, 'Linguagens Formais e Autômatos');
@@ -95,6 +107,7 @@ INSERT INTO subareas (id_area, name) VALUES (3, 'Arquitetura de Sistemas de Comp
 INSERT INTO subareas (id_area, name) VALUES (3, 'Software Básico');
 INSERT INTO subareas (id_area, name) VALUES (3, 'Teleinformática');
 
+INSERT INTO areas (name) VALUES ('Astronomia');
 INSERT INTO subareas (id_area, name) VALUES (4, 'Astronomia');
 INSERT INTO subareas (id_area, name) VALUES (4, 'Astronomia de Posição e Mecânica Celeste');
 INSERT INTO subareas (id_area, name) VALUES (4, 'Astronomia Fundamental');
@@ -118,10 +131,7 @@ INSERT INTO subareas (id_area, name) VALUES (4, 'Radioastronomia');
 INSERT INTO subareas (id_area, name) VALUES (4, 'Astronomia Espacial');
 INSERT INTO subareas (id_area, name) VALUES (4, 'Processamento de Dados Astronômicos');
 
--- Inserindo dados na tabela 'areas'
 INSERT INTO areas (name) VALUES ('Física');
-
--- Inserindo dados na tabela 'subareas'
 INSERT INTO subareas (id_area, name) VALUES (5, 'Física Geral');
 INSERT INTO subareas (id_area, name) VALUES (5, 'Métodos Matemáticos da Física');
 INSERT INTO subareas (id_area, name) VALUES (5, 'Física Clássica e Física Quântica; Mecânica e Campos');
@@ -177,10 +187,7 @@ INSERT INTO subareas (id_area, name) VALUES (5, 'Materiais Dielétricos e Propri
 INSERT INTO subareas (id_area, name) VALUES (5, 'Prop.Otic.e Espec.Matr.Cond.; Outras Inter.Mat.com Rad.Part.');
 INSERT INTO subareas (id_area, name) VALUES (5, 'Emissão Eletron.e Iônica por Liq.e Sólidos; Fenom.de Impacto');
 
--- Inserindo dados na tabela 'areas'
 INSERT INTO areas (name) VALUES ('Química');
-
--- Inserindo dados na tabela 'subareas'
 INSERT INTO subareas (id_area, name) VALUES (6, 'Química Orgânica');
 INSERT INTO subareas (id_area, name) VALUES (6, 'Estrutura, Conformação e Estereoquímica');
 INSERT INTO subareas (id_area, name) VALUES (6, 'Síntese Orgânica');
@@ -215,10 +222,7 @@ INSERT INTO subareas (id_area, name) VALUES (6, 'Titimetria');
 INSERT INTO subareas (id_area, name) VALUES (6, 'Instrumentação Analítica');
 INSERT INTO subareas (id_area, name) VALUES (6, 'Análise de Traços e Química Ambiental');
 
--- Inserindo dados na tabela 'areas'
 INSERT INTO areas (name) VALUES ('Geociências');
-
--- Inserindo dados na tabela 'subareas'
 INSERT INTO subareas (id_area, name) VALUES (7, 'Geologia');
 INSERT INTO subareas (id_area, name) VALUES (7, 'Mineralogia');
 INSERT INTO subareas (id_area, name) VALUES (7, 'Petrologia');

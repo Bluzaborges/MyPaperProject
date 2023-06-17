@@ -24,7 +24,7 @@
     <link href="~/assets/css/themes/layout/brand/light.css?v=7.2.9" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/themes/layout/aside/light.css?v=7.2.9" rel="stylesheet" type="text/css" />
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="~/assets/media/logos/logo-icon.ico" />
+    <link rel="shortcut icon" href="~/assets/media/logos/icon.ico" />
     <!-- Hotjar Tracking Code for keenthemes.com -->
     <script>(function (h, o, t, j, a, r) { h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) }; h._hjSettings = { hjid: 1070954, hjsv: 6 }; a = o.getElementsByTagName('head')[0]; r = o.createElement('script'); r.async = 1; r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv; a.appendChild(r); })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');</script>
 </head>
@@ -84,7 +84,7 @@
                             <!--begin::Header Logo-->
                             <div class="header-logo">
                                 <a href="">
-                                    <img alt="Logo" src="~/assets/media/logos/logo-mypaperproject.png" width="175" />
+                                    <img alt="Logo" src="~/assets/media/logos/logo-mypaperproject.png" width="240" />
                                 </a>
                             </div>
                             <!--end::Header Logo-->
@@ -92,14 +92,14 @@
                             <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                                 <!--begin::Header Nav-->
                                 <ul class="menu-nav">
-                                    <li class="menu-item menu-item-submenu menu-item-active">
-                                        <a href="" class="menu-link">
+                                    <li class="menu-item menu-item-submenu @(ViewContext.RouteData.Values["controller"].ToString().Equals("Researcher") ? "menu-item-active": "")">
+                                        <a href="@Url.Action("Index", "Researcher")" class="menu-link">
                                             <span class="menu-text">Pesquisadores</span>
                                             <i class="menu-arrow"></i>
                                         </a>
                                     </li>
-                                    <li class="menu-item menu-item-submenu">
-                                        <a href="" class="menu-link">
+                                    <li class="menu-item menu-item-submenu @(ViewContext.RouteData.Values["controller"].ToString().Equals("Project") ? "menu-item-active": "")">
+                                        <a href="@Url.Action("Index", "Project")" class="menu-link">
                                             <span class="menu-text">Projetos</span>
                                             <i class="menu-arrow"></i>
                                         </a>
@@ -181,7 +181,7 @@
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
                             <span class="text-muted font-weight-bold mr-2">@DateTime.Now.Year©</span>
-                            <a href="https://enttry.com.br/" target="_blank" class="text-dark-75 text-hover-primary">Enttry Software</a>
+                            <a href="https://enttry.com.br/" target="_blank" class="text-dark-75 text-hover-primary">Universidade de Caxias do Sul</a>
                         </div>
                         <!--end::Copyright-->
                         <div class="nav nav-dark"></div>
