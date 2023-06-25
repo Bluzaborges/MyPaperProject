@@ -41,6 +41,30 @@ CREATE TABLE researchers_subareas (
 	id_subarea INTEGER REFERENCES subareas
 );
 
+drop table if exists projects;
+create table projects(
+	id SERIAL PRIMARY KEY,
+	name varchar(200),
+	description varchar,
+	funded boolean,
+	ended boolean,
+	ended_date timestamp
+);
+
+DROP TABLE IF EXISTS projects_areas;
+CREATE TABLE projects_areas (
+	id SERIAL PRIMARY KEY,
+	id_project INTEGER REFERENCES projects,
+	id_area INTEGER REFERENCES areas
+);
+
+DROP TABLE IF EXISTS projects_researchers;
+CREATE TABLE projects_researchers (
+	id SERIAL PRIMARY KEY,
+	id_project INTEGER REFERENCES projects,
+	id_researcher INTEGER REFERENCES researchers
+);
+
 INSERT INTO areas (name) VALUES ('Matemática');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Álgebra');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Conjuntos');
