@@ -140,5 +140,50 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
+
+		public List<Researcher> GetAllResearchers()
+		{
+			List<Researcher> result = new List<Researcher>();
+
+			try
+				{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT * FROM researchers";
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							Researcher researcher = new Researcher();
+
+							if (reader["id"] != DBNull.Value)
+								researcher.Id = Convert.ToInt32(reader["id"]);
+
+							if (reader["name"] != DBNull.Value)
+								researcher.Name = reader["name"].ToString();
+
+							if (reader["cpf"] != DBNull.Value)
+								researcher.Cpf = reader["cpf"].ToString();
+
+							if (reader["type"] != DBNull.Value)
+								researcher.Type = reader["type"].ToString();
+
+							result.Add(researcher);
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcher.GetAllResearchers]: " + ex.Message);
+			}
+
+			return result;
+		}
 	}
 }

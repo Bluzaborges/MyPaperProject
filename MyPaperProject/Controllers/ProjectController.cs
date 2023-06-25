@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyPaperProject.Database;
 
 namespace MyPaperProject.Controllers
 {
@@ -11,7 +12,13 @@ namespace MyPaperProject.Controllers
 
         public IActionResult Register()
         {
-            return View();
+			DbAreaPostgre dbArea = new DbAreaPostgre();
+            DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+
+			ViewBag.Areas = dbArea.GetAllAreas();
+            ViewBag.Researchers = dbResearcher.GetAllResearchers();
+
+			return View();
         }
     }
 }
