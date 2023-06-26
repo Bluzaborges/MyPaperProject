@@ -6,7 +6,7 @@
 		int RegisterResearcher(Researcher researcher);
 		bool RegisterResearcherAreas(int idResearcher, int idArea);
 		bool RegisterResearcherSubareas(int idResearcher, int idSubarea);
-
 		public List<Researcher> GetAllResearchers();
+		public List<Researcher> GetAllResearchersAreas();
 	}
 }

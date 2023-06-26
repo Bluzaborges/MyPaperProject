@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPaperProject.Database;
+using MyPaperProject.Models;
 
 namespace MyPaperProject.Controllers
 {
@@ -12,13 +13,21 @@ namespace MyPaperProject.Controllers
 
         public IActionResult Register()
         {
-			DbAreaPostgre dbArea = new DbAreaPostgre();
+            DbAreaPostgre dbArea = new DbAreaPostgre();
+            DbFundingPostgre dbFunding = new DbFundingPostgre();
             DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
 
-			ViewBag.Areas = dbArea.GetAllAreas();
+            ViewBag.Areas = dbArea.GetAllAreas();
+            ViewBag.Fundings = dbFunding.GetAllFundings();
             ViewBag.Researchers = dbResearcher.GetAllResearchers();
 
-			return View();
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult RegisterProject([FromBody] Project project)
+        {
+            return Json(project);
         }
     }
 }

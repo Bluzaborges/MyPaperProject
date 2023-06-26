@@ -69,25 +69,24 @@ namespace MyPaperProject.Controllers
 			return Json(new { success = result, message = idResearcher });
         }
 
-        [HttpPost]
-        public JsonResult GetAllAreas()
-        {
-            DbAreaPostgre dbArea = new DbAreaPostgre();
-
-            List<Area> areas = dbArea.GetAllAreas();
-
-            return Json(areas);
-        }
-
-        [HttpPost]
-		public JsonResult GetAllSubareas()
+		[HttpPost]
+		public JsonResult GetAllResearchers()
 		{
+			DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
 
-			DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
+			List<Researcher> researchers = dbResearcher.GetAllResearchers();
 
-            List<Subarea> subareas = dbSubarea.GetAllSubareas();
-
-			return Json(subareas);
+			return Json(researchers);
 		}
+
+		[HttpPost]
+        public JsonResult GetAllResearchersAreas()
+        {
+            DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+
+            List<Researcher> researchers = dbResearcher.GetAllResearchersAreas();
+
+            return Json(researchers);
+        }
 	}
 }

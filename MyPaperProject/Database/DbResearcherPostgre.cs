@@ -51,12 +51,13 @@ namespace MyPaperProject.Database
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
-					cmd.CommandText = @"INSERT INTO researchers (name, cpf, type) " +
-									  @"VALUES (@Name, @Cpf, @Type) RETURNING id;";
+					cmd.CommandText = @"INSERT INTO researchers (name, cpf, type, creation_date) " +
+									  @"VALUES (@Name, @Cpf, @Type, @CreationDate) RETURNING id;";
 
 					cmd.Parameters.AddWithValue("@Name", researcher.Name);
 					cmd.Parameters.AddWithValue("@Cpf", researcher.Cpf);
 					cmd.Parameters.AddWithValue("@Type", researcher.Type);
+					cmd.Parameters.AddWithValue("@CreationDate", DateTime.Now);
 
 					using (cmd.Connection = db.OpenConnection())
 					using (NpgsqlDataReader reader = cmd.ExecuteReader())
@@ -146,12 +147,13 @@ namespace MyPaperProject.Database
 			List<Researcher> result = new List<Researcher>();
 
 			try
-				{
+			{
 				DbAccessPostgre db = new DbAccessPostgre();
 
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
-					cmd.CommandText = @"SELECT * FROM researchers";
+					cmd.CommandText = @"SELECT * FROM researchers " +
+									  @"ORDER BY name;";
 
 					using (cmd.Connection = db.OpenConnection())
 					using (NpgsqlDataReader reader = cmd.ExecuteReader())
@@ -181,6 +183,54 @@ namespace MyPaperProject.Database
 			catch (Exception ex)
 			{
 				Log.Add(LogType.error, "[DbResearcher.GetAllResearchers]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public List<Researcher> GetAllResearchersAreas()
+		{
+			List<Researcher> result = new List<Researcher>();
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT ra.id_researcher, ra.id_area, r.name, r.type " +
+									  @"FROM researchers_areas AS ra, researchers AS r " +
+									  @"WHERE r.id = ra.id_researcher " +
+									  @"AND r.deleted = false;";
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							Researcher researcher = new Researcher();
+
+							if (reader["id_researcher"] != DBNull.Value)
+								researcher.Id = Convert.ToInt32(reader["id_researcher"]);
+
+							if (reader["id_area"] != DBNull.Value)
+								researcher.IdArea = Convert.ToInt32(reader["id_area"]);
+
+							if (reader["name"] != DBNull.Value)
+								researcher.Name = reader["name"].ToString();
+
+							if (reader["type"] != DBNull.Value)
+								researcher.Type = reader["type"].ToString();
+
+							result.Add(researcher);
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcher.GetAllResearchersAreas]: " + ex.Message);
 			}
 
 			return result;

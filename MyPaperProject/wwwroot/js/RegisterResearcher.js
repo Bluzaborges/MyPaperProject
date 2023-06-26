@@ -7,10 +7,12 @@ var KTSelect2 = function () {
 
         $('#select-area').select2({
             placeholder: "Selecione a(s) área(s) de atuação do pesquisador",
+            tags: true
         });
 
         $('#select-subarea').select2({
             placeholder: "Selecione a(s) subárea(s) de atuação do pesquisador",
+            tags: true
         });
 
         $('#select-type').select2({
@@ -47,7 +49,7 @@ jQuery(document).ready(function () {
     KTInputmask.init();
 
     $.ajax({
-        url: "/Researcher/GetAllAreas",
+        url: "/Area/GetAllAreas",
         type: "POST",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -58,7 +60,7 @@ jQuery(document).ready(function () {
     });
 
     $.ajax({
-        url: "/Researcher/GetAllSubareas",
+        url: "/Area/GetAllSubareas",
         type: "POST",
         contentType: "application/json; charset=utf-8",
         dataType: "json",

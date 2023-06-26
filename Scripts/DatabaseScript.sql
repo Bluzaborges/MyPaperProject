@@ -24,7 +24,10 @@ CREATE TABLE researchers (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(150) NOT NULL,
 	cpf VARCHAR(11) NOT NULL,
-	type VARCHAR(15) NOT NULL
+	type VARCHAR(15) NOT NULL,
+	creation_date DATE,
+	deleted BOOLEAN DEFAULT false,
+	deleted_date DATE
 );
 
 DROP TABLE IF EXISTS researchers_areas;
@@ -41,14 +44,18 @@ CREATE TABLE researchers_subareas (
 	id_subarea INTEGER REFERENCES subareas
 );
 
-drop table if exists projects;
-create table projects(
+DROP TABLE IF EXISTS projects;
+CREATE TABLE projects(
 	id SERIAL PRIMARY KEY,
-	name varchar(200),
-	description varchar,
-	funded boolean,
-	ended boolean,
-	ended_date timestamp
+	id_funding INTEGER,
+	name VARCHAR(200),
+	description TEXT,
+	funded BOOLEAN,
+	ended BOOLEAN,
+	ended_date DATE,
+	creation_date DATE,
+	deleted BOOLEAN,
+	deleted_date DATE
 );
 
 DROP TABLE IF EXISTS projects_areas;
@@ -64,6 +71,18 @@ CREATE TABLE projects_researchers (
 	id_project INTEGER REFERENCES projects,
 	id_researcher INTEGER REFERENCES researchers
 );
+
+DROP TABLE IF EXISTS fundings;
+CREATE TABLE fundings (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL
+);
+
+INSERT INTO fundings (name) VALUES ('SICT');
+INSERT INTO fundings (name) VALUES ('FAPERGS');
+INSERT INTO fundings (name) VALUES ('CNPQ');
+INSERT INTO fundings (name) VALUES ('CAPES');
+INSERT INTO fundings (name) VALUES ('FINEP');
 
 INSERT INTO areas (name) VALUES ('Matemática');
 INSERT INTO subareas (id_area, name) VALUES (1, 'Álgebra');
