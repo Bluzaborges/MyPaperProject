@@ -34,9 +34,9 @@
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Tipo</label>
 			<div class="col-md-8 col-sm-12">
 				<select class="form-control select2" id="select-type" name="param">
-					<option value="1">Aluno</option>
-					<option value="2">Docente</option>
-					<option value="3">Funcionário</option>
+					<option value="@ResearcherType.Student.ToString()">Aluno</option>
+					<option value="@ResearcherType.Teacher.ToString()">Docente</option>
+					<option value="@ResearcherType.Employee.ToString()">Funcionário</option>
 				</select>
 			</div>
 		</div>
