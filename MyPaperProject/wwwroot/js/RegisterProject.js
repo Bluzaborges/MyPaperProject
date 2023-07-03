@@ -160,6 +160,7 @@ $("#btnSubmit").click(function () {
         idFunding: $("#funded").prop('checked') == true ? $("#select-funding").val() : 0,
         ended: $("#ended").prop('checked'),
         endedDate: $("#ended").prop('checked') == false || $("#ended-date").val() == "" ? "0001-01-01" : $("#ended-date").val(),
+        description: $("#description").val()
     };
 
     $.ajax({

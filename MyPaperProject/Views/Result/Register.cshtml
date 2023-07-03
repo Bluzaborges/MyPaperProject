@@ -1,0 +1,50 @@
+﻿@section Scripts{
+	<script src="~/js/RegisterResult.js"></script>
+}
+
+<form>
+	<div class="card-body">
+		<div class="form-group row">
+			<label class="col-lg-3 col-form-label text-lg-right">Full Name:</label>
+			<div class="col-lg-6">
+				<input type="text" class="form-control" placeholder="Enter full name" name="name" />
+				<span class="form-text text-muted">Please enter your full name</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-lg-3 col-form-label text-lg-right">Email:</label>
+			<div class="col-lg-6">
+				<input type="email" class="form-control" placeholder="Enter email" name="email" />
+				<span class="form-text text-muted">Please enter your email</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-lg-3 col-form-label text-lg-right">Message:</label>
+			<div class="col-lg-6">
+				<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Please enter your message"></textarea>
+				<span class="form-text text-muted">We'll never share your message with anyone else.</span>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-lg-3 col-form-label text-lg-right">Upload File:</label>
+			<div class="col-lg-6">
+				<div class="uppy" id="kt_uppy_5">
+					<div class="uppy-wrapper"></div>
+					<div class="uppy-list"></div>
+					<div class="uppy-status"></div>
+					<div class="uppy-informer uppy-informer-min"></div>
+				</div>
+				<span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer">
+		<div class="row">
+			<div class="col-lg-3"></div>
+			<div class="col-lg-6">
+				<button type="reset" class="btn btn-primary">Submit</button>
+				<button type="reset" class="btn btn-secondary">Cancel</button>
+			</div>
+		</div>
+	</div>
+</form>

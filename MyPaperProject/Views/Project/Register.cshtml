@@ -1,5 +1,6 @@
 ﻿@section Scripts{
 	<script src="~/js/RegisterProject.js"></script>
+	<script src="~/js/RegisterResult.js"></script>
 }
 
 <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
@@ -7,6 +8,11 @@
 		<div class="d-flex align-items-center flex-wrap mr-2">
 			<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Projetos</h5>
 			<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+			<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+				<li class="breadcrumb-item">
+					<a href="/Feedback" class="text-muted">Adicionar Projeto</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -79,6 +85,24 @@
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Data de término</label>
 			<div class="col-md-8 col-sm-12">
 				<input type="date" class="form-control" id="ended-date" disabled>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
+			<div class="col-md-8 col-sm-12">
+				<textarea class="form-control form-control-solid" id="description" rows="3"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-lg-3 col-form-label text-lg-right">Resultados:</label>
+			<div class="col-lg-6">
+				<div class="uppy" id="kt_uppy_5">
+					<div class="uppy-wrapper"></div>
+					<div class="uppy-list"></div>
+					<div class="uppy-status"></div>
+					<div class="uppy-informer uppy-informer-min"></div>
+				</div>
+				<span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
 			</div>
 		</div>
 	</div>
