@@ -78,6 +78,32 @@ CREATE TABLE fundings (
 	name VARCHAR(100) NOT NULL
 );
 
+DROP TABLE IF EXISTS results;
+CREATE TABLE results (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(200),
+	description TEXT,
+	creation_date TIMESTAMP,
+	deleted BOOLEAN DEFAULT false,
+	deleted_date DATE
+);
+
+DROP TABLE IF EXISTS attachments;
+CREATE TABLE attachments (
+	id SERIAL PRIMARY KEY,
+	id_result INTEGER REFERENCES results,
+	name VARCHAR(200),
+	content BYTEA
+);
+
+DROP TABLE IF EXISTS projects_results;
+CREATE TABLE projects_results (
+	id SERIAL PRIMARY KEY,
+	id_project INTEGER REFERENCES projects,
+	id_result INTEGER REFERENCES results
+);
+
+
 INSERT INTO fundings (name) VALUES ('SICT');
 INSERT INTO fundings (name) VALUES ('FAPERGS');
 INSERT INTO fundings (name) VALUES ('CNPQ');
