@@ -49,6 +49,9 @@ namespace MyPaperProject.Controllers
 
 				if (idProject != 0)
 				{
+                    for (int i = 0; i < project.IdAreas.Count; i++)
+                        dbProject.RegisterProjectsAreas(idProject, project.IdAreas[i]);
+
 					for (int i = 0; i < project.IdResearchers.Count; i++)
 						dbProject.RegisterProjectsResearchers(idProject, project.IdResearchers[i]);
 
@@ -67,5 +70,31 @@ namespace MyPaperProject.Controllers
 
 			return Json(new { success = result, message = idProject });
 		}
+
+        [HttpPost]
+        public JsonResult GetAllProjects()
+        {
+            DbProjectPostgre dbProject = new DbProjectPostgre();
+            DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+            DbFundingPostgre dbFunding = new DbFundingPostgre();
+            DbAreaPostgre dbArea = new DbAreaPostgre();
+
+            List<Project> projects = dbProject.GetAllProjects();
+
+            foreach (Project project in projects)
+            {
+                List<Researcher> researchers = dbResearcher.GetAllResearchersByIdProject(project.Id);
+
+                project.ResearchersNames = researchers.Where(r => r.Type == ResearcherType.Student.ToString() || r.Type == ResearcherType.Employee.ToString()).Select(r => r.Name).ToList();
+                project.TeachersNames = researchers.Where(r => r.Type == ResearcherType.Teacher.ToString()).Select(r => r.Name).ToList();
+
+                project.AreasNames = dbArea.GetAllAreasNamesByIdProject(project.Id);
+
+                project.FundingName = dbFunding.GetFundingById(project.IdFunding);
+            }
+
+            return Json(projects);
+        }
+
     }
 }

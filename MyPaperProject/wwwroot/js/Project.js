@@ -1,5 +1,6 @@
 ﻿
-function LoadResearchersTable() {
+
+function LoadProjectsTable() {
 
     datatable = $('#kt_datatable').KTDatatable({
 
@@ -7,7 +8,7 @@ function LoadResearchersTable() {
             type: 'remote',
             source: {
                 read: {
-                    url: "/Researcher/GetAllResearchers",
+                    url: "/Project/GetAllProjects",
                     timeout: 240000,
                 }
             },
@@ -27,7 +28,7 @@ function LoadResearchersTable() {
         translate: {
             records: {
                 processing: 'Aguarde...',
-                noRecords: 'Nenhum pesquisador encontrado.'
+                noRecords: 'Nenhum projeto encontrado.'
             },
             toolbar: {
                 pagination: {
@@ -64,72 +65,101 @@ function LoadResearchersTable() {
                 }
             },
             {
-                field: 'cpf',
-                title: 'CPF',
+                field: 'creationDate',
+                title: 'PUBLICADO EM',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 width: 125,
                 template: function (row) {
 
-                    row.cpf = row.cpf.replace(/\D/g, '');
-                    row.cpf = row.cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                    const splitDate = row.creationDate.split('T')[0].split("-");
+                    const newDate = splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0];
 
-                    var output = '\<a class="text-truncate text-dark-75 d-block font-size-md">' + row.cpf + '</a>'
+                    var output = '\<a class="text-truncate text-dark-75 d-block font-size-md">' + newDate + '</a>'
 
                     return output;
                 }
             },
             {
-                field: 'type',
-                title: 'TIPO',
+                field: 'teachersNames',
+                title: 'DOCENTE(S)',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
-                width: 125,
                 template: function (row) {
 
-                    if (row.type == "Teacher") {
-                        row.type = "Professor"
-                    } else if (row.type == "Student") {
-                        row.type = "Aluno"
-                    } else if (row.type == "Employee") {
-                        row.type = "Funcionário"
-                    }
+                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.teachersNames[0] + '</span> '
 
-                    var output = '\<a class="text-truncate text-dark-75 d-block font-size-md">' + row.type + '</a>'
+                    for (let i = 1; i < row.teachersNames.length; i++)
+                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.teachersNames[i] + '</span> '
 
                     return output;
                 }
             },
             {
-                field: 'nameAreas',
+                field: 'researchersNames',
+                title: 'PESQUISADORE(S)',
+                selector: false,
+                overflow: 'visible',
+                autoHide: false,
+                template: function (row) {
+
+                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.researchersNames[0] + '</span> '
+
+                    for (let i = 1; i < row.researchersNames.length; i++)
+                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.researchersNames[i] + '</span> '
+
+                    return output;
+                }
+            },
+            {
+                field: 'areasNames',
                 title: 'ÁREA(S) DO CONHECIMENTO',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameAreas[0] + '</span> '
+                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.areasNames[0] + '</span> '
 
-                    for (let i = 1; i < row.nameAreas.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameAreas[i] + '</span> '
+                    for (let i = 1; i < row.areasNames.length; i++)
+                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.areasNames[i] + '</span> '
 
                     return output;
                 }
             },
             {
-                field: 'nameSubareas',
-                title: 'SUBÁREA(S) DO CONHECIMENTO',
+                field: 'funding',
+                title: 'FINANCIAMENTO',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameSubareas[0] + '</span> '
+                    if (!row.funded)
+                        return '\<a class="text-truncate text-dark-75 d-block font-size-md">Não financiado</a>'
 
-                    for (let i = 1; i < row.nameSubareas.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameSubareas[i] + '</span> '
+                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.fundingName + '</span> '
+
+                    return output;
+                }
+            },
+            {
+                field: 'ended',
+                title: 'FINALIZADO EM',
+                selector: false,
+                overflow: 'visible',
+                autoHide: false,
+                template: function (row) {
+
+                    if (!row.ended)
+                        return '\<a class="text-truncate text-dark-75 d-block font-size-md">Em andamento</a>'
+
+                    const splitDate = row.endedDate.split('T')[0].split("-");
+                    const newDate = splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0];
+
+                    var output = '\<a class="text-truncate text-dark-75 d-block font-size-md">' + newDate + '</a>'
 
                     return output;
                 }
@@ -162,5 +192,6 @@ function LoadResearchersTable() {
 }
 
 jQuery(document).ready(function () {
-    LoadResearchersTable();
+    LoadProjectsTable();
 });
+

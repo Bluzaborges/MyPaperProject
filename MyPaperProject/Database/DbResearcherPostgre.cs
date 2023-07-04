@@ -236,5 +236,49 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
-	}
+
+        public List<Researcher> GetAllResearchersByIdProject(int idProject)
+        {
+            List<Researcher> result = new List<Researcher>();
+
+            try
+            {
+                DbAccessPostgre db = new DbAccessPostgre();
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.CommandText = @"SELECT r.name, r.type " +
+                                      @"FROM projects_researchers AS pr, researchers AS r " +
+                                      @"WHERE pr.id_project = @IdProject AND pr.id_researcher = r.id " +
+                                      @"ORDER BY r.name;";
+
+                    cmd.Parameters.AddWithValue("IdProject", idProject);
+
+                    using (cmd.Connection = db.OpenConnection())
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+							Researcher researcher = new Researcher();
+
+                            if (reader["name"] != DBNull.Value)
+                                researcher.Name = reader["name"].ToString();
+
+                            if (reader["type"] != DBNull.Value)
+                                researcher.Type = reader["type"].ToString();
+
+							result.Add(researcher);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Add(LogType.error, "[DbResearcher.GetAllResearchersByIdProject]: " + ex.Message);
+            }
+
+            return result;
+        }
+    }
 }

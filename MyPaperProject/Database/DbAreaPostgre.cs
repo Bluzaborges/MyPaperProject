@@ -82,5 +82,42 @@ namespace MyPaperProject.Database
 
             return result;
         }
-	}
+
+        public List<string> GetAllAreasNamesByIdProject(int idProject)
+        {
+            List<string> result = new List<string>();
+
+            try
+            {
+                DbAccessPostgre db = new DbAccessPostgre();
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.CommandText = @"SELECT a.name " +
+                                      @"FROM projects_areas AS pa, areas AS a " +
+                                      @"WHERE pa.id_project = @IdProject AND pa.id_area = a.id " +
+                                      @"ORDER BY a.name;";
+
+                    cmd.Parameters.AddWithValue("IdProject", idProject);
+
+                    using (cmd.Connection = db.OpenConnection())
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["name"] != DBNull.Value)
+                                result.Add(reader["name"].ToString());
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Add(LogType.error, "[DbArea.GetAllAreasNamesByIdProject]: " + ex.Message);
+            }
+
+            return result;
+        }
+    }
 }
