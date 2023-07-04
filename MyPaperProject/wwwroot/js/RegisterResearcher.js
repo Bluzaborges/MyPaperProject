@@ -105,6 +105,7 @@ $("#select-area").change(function () {
 $("#btnSubmit").click(function () {
 
     var formData = {
+        id: $("#researcher-id").val(),
         name: $("#researcher-name").val(),
         cpf: $("#researcher-document").val(),
         type: $("#select-type").val(),

@@ -22,17 +22,20 @@ namespace MyPaperProject.Controllers
             ViewBag.Fundings = dbFunding.GetAllFundings();
             ViewBag.Researchers = dbResearcher.GetAllResearchers();
 
-            return View();
+            Project project = new Project();
+
+            project.Id = 0;
+
+            return View("Register", project);
         }
 
         [HttpPost]
         public JsonResult RegisterProject([FromBody] Project project)
         {
 			DbProjectPostgre dbProject = new DbProjectPostgre();
+            DbResultPostgre dbResult = new DbResultPostgre();
 			bool result = false;
 			int idProject = 0;
-
-			project.IdResearchers = project.IdResearchers.Concat(project.IdTeachers).ToList();
 
 			try
 			{
@@ -42,26 +45,42 @@ namespace MyPaperProject.Controllers
 				if (project.Name.Length > 200)
 					return Json(new { success = result, message = "Nome maior que o número de caracteres permitido." });
 
-				if (dbProject.ProjectExists(project.Name))
+				if (dbProject.ProjectExists(project.Name) && project.Id == 0)
 					return Json(new { success = result, message = "Projeto já cadastrado." });
 
-				idProject = dbProject.RegisterProject(project);
+                if (project.Id == 0)
+                {
+					project.IdResearchers = project.IdResearchers.Concat(project.IdTeachers).ToList();
 
-				if (idProject != 0)
-				{
-                    for (int i = 0; i < project.IdAreas.Count; i++)
-                        dbProject.RegisterProjectsAreas(idProject, project.IdAreas[i]);
+					idProject = dbProject.RegisterProject(project);
 
-					for (int i = 0; i < project.IdResearchers.Count; i++)
-						dbProject.RegisterProjectsResearchers(idProject, project.IdResearchers[i]);
+					if (idProject != 0)
+					{
+						for (int i = 0; i < project.IdAreas.Count; i++)
+							dbProject.RegisterProjectsAreas(idProject, project.IdAreas[i]);
 
-					for (int i = 0; i < project.IdResults.Count; i++)
-						dbProject.RegisterProjectsResults(idProject, project.IdResults[i]);
+						for (int i = 0; i < project.IdResearchers.Count; i++)
+							dbProject.RegisterProjectsResearchers(idProject, project.IdResearchers[i]);
 
-					result = true;
+						for (int i = 0; i < project.IdResults.Count; i++)
+							dbProject.RegisterProjectsResults(idProject, project.IdResults[i]);
 
+						result = true;
+
+					}
+					else
+						return Json(new { success = result, message = "Não foi possível inserir o projeto." });
 				} else
-					return Json(new { success = result, message = "Não foi possível inserir o projeto." });
+                {
+					result = dbProject.UpdateProject(project);
+
+                    List<int> registeredResuls = dbResult.GetAllResultsByIdProject(project.Id);
+
+                    List<int> newResults = project.IdResults.Except(registeredResuls).ToList();
+
+					for (int i = 0; i < newResults.Count; i++)
+						dbProject.RegisterProjectsResults(project.Id, newResults[i]);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -70,6 +89,30 @@ namespace MyPaperProject.Controllers
 
 			return Json(new { success = result, message = idProject });
 		}
+
+        public IActionResult Edit(int id)
+        {
+			DbAreaPostgre dbArea = new DbAreaPostgre();
+			DbFundingPostgre dbFunding = new DbFundingPostgre();
+			DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+			DbProjectPostgre dbProject = new DbProjectPostgre();
+
+			ViewBag.Areas = dbArea.GetAllAreas();
+			ViewBag.Fundings = dbFunding.GetAllFundings();
+			ViewBag.Researchers = dbResearcher.GetAllResearchers();
+
+			Project project = dbProject.GetProjectById(id);
+
+            project.Id = id;
+            project.IdAreas = dbArea.GetAllAreasByIdProject(project.Id).Select(a => a.Id).ToList();
+
+			List<Researcher> researchers = dbResearcher.GetAllResearchersByIdProject(project.Id);
+
+			project.IdResearchers = researchers.Where(r => r.Type == ResearcherType.Student.ToString() || r.Type == ResearcherType.Employee.ToString()).Select(r => r.Id).ToList();
+			project.IdTeachers = researchers.Where(r => r.Type == ResearcherType.Teacher.ToString()).Select(r => r.Id).ToList();
+
+			return View("Register", project);
+        }
 
         [HttpPost]
         public JsonResult GetAllProjects()
@@ -88,7 +131,7 @@ namespace MyPaperProject.Controllers
                 project.ResearchersNames = researchers.Where(r => r.Type == ResearcherType.Student.ToString() || r.Type == ResearcherType.Employee.ToString()).Select(r => r.Name).ToList();
                 project.TeachersNames = researchers.Where(r => r.Type == ResearcherType.Teacher.ToString()).Select(r => r.Name).ToList();
 
-                project.AreasNames = dbArea.GetAllAreasNamesByIdProject(project.Id);
+                project.AreasNames = dbArea.GetAllAreasByIdProject(project.Id).Select(a => a.Name).ToList();
 
                 project.FundingName = dbFunding.GetFundingById(project.IdFunding);
             }

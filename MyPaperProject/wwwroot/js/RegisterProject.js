@@ -160,6 +160,7 @@ $("#btnSubmit").click(function () {
         idResultList.push(idResults[i].id);
 
     var formData = {
+        id: $("#project-id").val(),
         name: $("#project-name").val(),
         idAreas: $("#select-area").val(),
         idTeachers: $("#select-teacher").val(),

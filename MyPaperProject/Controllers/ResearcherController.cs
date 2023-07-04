@@ -15,11 +15,14 @@ namespace MyPaperProject.Controllers
         public IActionResult Register()
         {
             DbAreaPostgre dbArea= new DbAreaPostgre();
-            DbSubareaPostgre dbSubarea= new DbSubareaPostgre();
 
             ViewBag.Areas = dbArea.GetAllAreas();
 
-            return View();
+            Researcher researcher = new Researcher();
+
+            researcher.Id = 0;
+
+            return View("Register", researcher);
         }
 
         [HttpPost]
@@ -43,23 +46,30 @@ namespace MyPaperProject.Controllers
 				if (researcher.Cpf.Length != 11)
 					return Json(new { success = result, message = "CPF inválido." });
 
-                if (dbResearcher.ResearcherExists(researcher.Name, researcher.Cpf))
+                if (dbResearcher.ResearcherExists(researcher.Name, researcher.Cpf) && researcher.Id == 0)
 					return Json(new { success = result, message = "Pesquisador já cadastrado." });
 
-				idResearcher = dbResearcher.RegisterResearcher(researcher);
-
-                if (idResearcher != 0)
+                if (researcher.Id == 0)
                 {
-                    for (int i = 0; i < researcher.idAreas.Count; i++)
-                        dbResearcher.RegisterResearcherAreas(idResearcher, researcher.idAreas[i]);
+					idResearcher = dbResearcher.RegisterResearcher(researcher);
 
-                    for (int i = 0; i < researcher.idSubareas.Count; i++)
-                        dbResearcher.RegisterResearcherSubareas(idResearcher, researcher.idSubareas[i]);
+					if (idResearcher != 0)
+					{
+						for (int i = 0; i < researcher.idAreas.Count; i++)
+							dbResearcher.RegisterResearcherAreas(idResearcher, researcher.idAreas[i]);
 
-                    result = true;
+						for (int i = 0; i < researcher.idSubareas.Count; i++)
+							dbResearcher.RegisterResearcherSubareas(idResearcher, researcher.idSubareas[i]);
 
-                } else
-					return Json(new { success = result, message = "Não foi possível inserir o pesquisador." });
+						result = true;
+
+					}
+					else
+						return Json(new { success = result, message = "Não foi possível inserir o pesquisador." });
+				} else
+                {
+                    result = dbResearcher.UpdateResearcher(researcher);
+                }
 
 			} catch (Exception ex)
             {
@@ -68,6 +78,24 @@ namespace MyPaperProject.Controllers
 
 			return Json(new { success = result, message = idResearcher });
         }
+
+        public IActionResult Edit(int id)
+        {
+			DbAreaPostgre dbArea = new DbAreaPostgre();
+			DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
+            DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+
+			ViewBag.Areas = dbArea.GetAllAreas();
+            ViewBag.Subareas = dbSubarea.GetAllSubareas();
+
+            Researcher researcher = dbResearcher.GetResearcherById(id);
+            researcher.Id = id;
+
+            researcher.idAreas = dbArea.GetAllAreasByIdResearcher(id).Select(a => a.Id).ToList();
+            researcher.idSubareas = dbSubarea.GetAllSubareasByIdResearcher(id).Select(s => s.Id).ToList();
+
+			return View("Register", researcher);
+		}
 
 		[HttpPost]
 		public JsonResult GetAllResearchers()
@@ -80,8 +108,8 @@ namespace MyPaperProject.Controllers
 
             foreach (Researcher researcher in researchers)
             {
-                researcher.nameAreas = dbArea.GetAllAreasNamesByIdResearcher(researcher.Id);
-                researcher.nameSubareas = dbSubarea.GetAllSubareasNamesByIdResearcher(researcher.Id);
+                researcher.nameAreas = dbArea.GetAllAreasByIdResearcher(researcher.Id).Select(a => a.Name).ToList();
+                researcher.nameSubareas = dbSubarea.GetAllSubareasByIdResearcher(researcher.Id).Select(s => s.Name).ToList();
             }
 
 			return Json(researchers);

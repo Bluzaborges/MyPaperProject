@@ -7,6 +7,47 @@ namespace MyPaperProject.Database
 {
 	public class DbResearcherPostgre : IResearcherRepository
 	{
+		public Researcher GetResearcherById(int id)
+		{
+			Researcher result = new Researcher();
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT * FROM researchers " +
+									  @"WHERE id = @Id AND deleted = false;";
+
+					cmd.Parameters.AddWithValue("@Id", id);
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							if (reader["name"] != DBNull.Value)
+								result.Name = reader["name"].ToString();
+
+							if (reader["cpf"] != DBNull.Value)
+								result.Cpf = reader["cpf"].ToString();
+
+							if (reader["type"] != DBNull.Value)
+								result.Type = reader["type"].ToString();
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcher.GetResearcherById]: " + ex.Message);
+			}
+
+			return result;
+		}
+
 		public bool ResearcherExists(string name, string cpf)
 		{
 			bool result = false;
@@ -247,7 +288,7 @@ namespace MyPaperProject.Database
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
-                    cmd.CommandText = @"SELECT r.name, r.type " +
+                    cmd.CommandText = @"SELECT r.id, r.name, r.type " +
                                       @"FROM projects_researchers AS pr, researchers AS r " +
                                       @"WHERE pr.id_project = @IdProject AND pr.id_researcher = r.id " +
                                       @"ORDER BY r.name;";
@@ -261,7 +302,10 @@ namespace MyPaperProject.Database
                         {
 							Researcher researcher = new Researcher();
 
-                            if (reader["name"] != DBNull.Value)
+							if (reader["id"] != DBNull.Value)
+								researcher.Id = Convert.ToInt32(reader["id"]);
+
+							if (reader["name"] != DBNull.Value)
                                 researcher.Name = reader["name"].ToString();
 
                             if (reader["type"] != DBNull.Value)
@@ -280,5 +324,38 @@ namespace MyPaperProject.Database
 
             return result;
         }
+
+		public bool UpdateResearcher(Researcher researcher)
+		{
+			bool result = false;
+			DbAccessPostgre db = new DbAccessPostgre();
+
+			try
+			{
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"UPDATE researchers " +
+									  @"SET name = @Name, cpf = @Cpf " +
+									  @"WHERE id = @Id;";
+
+					cmd.Parameters.AddWithValue("@Id", researcher.Id);
+					cmd.Parameters.AddWithValue("@Name", researcher.Name);
+					cmd.Parameters.AddWithValue("@Cpf", researcher.Cpf);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcher.UpdateResearcher]: " + ex.Message);
+			}
+
+			return result;
+		}
     }
 }

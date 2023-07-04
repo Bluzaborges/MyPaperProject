@@ -158,5 +158,41 @@ namespace MyPaperProject.Database
 
 			return response;
 		}
+
+		public List<int> GetAllResultsByIdProject(int idProject)
+		{
+			List<int> result = new List<int>();
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT id_result " +
+									  @"FROM projects_results " +
+									  @"WHERE id_project = @IdProject;";
+
+					cmd.Parameters.AddWithValue("IdProject", idProject);
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							if (reader["id_result"] != DBNull.Value)
+								result.Add(Convert.ToInt32(reader["id_result"]));
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbArea.GetAllResultsByIdProject]: " + ex.Message);
+			}
+
+			return result;
+		}
 	}
 }

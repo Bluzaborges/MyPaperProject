@@ -62,7 +62,56 @@ namespace MyPaperProject.Database
             return result;
         }
 
-        public bool ProjectExists(string name)
+		public Project GetProjectById(int id)
+		{
+			Project result = new Project();
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT id_funding, name, description, funded, ended, ended_date FROM projects " +
+									  @"WHERE id = @Id AND deleted = false;";
+
+					cmd.Parameters.AddWithValue("Id", id);
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							if (reader["id_funding"] != DBNull.Value)
+								result.IdFunding = Convert.ToInt32(reader["id_funding"]);
+
+							if (reader["name"] != DBNull.Value)
+								result.Name = reader["name"].ToString();
+
+							if (reader["description"] != DBNull.Value)
+								result.Description = reader["description"].ToString();
+
+							if (reader["funded"] != DBNull.Value)
+								result.Funded = Convert.ToBoolean(reader["funded"]);
+
+							if (reader["ended"] != DBNull.Value)
+								result.Ended = Convert.ToBoolean(reader["ended"]);
+
+							if (reader["ended_date"] != DBNull.Value)
+								result.EndedDate = Convert.ToDateTime(reader["ended_date"]);
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbProjectPostgre.GetProjectById]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool ProjectExists(string name)
 		{
 			bool result = false;
 			int count = 0;
@@ -226,6 +275,44 @@ namespace MyPaperProject.Database
 			catch (Exception ex)
 			{
 				Log.Add(LogType.error, "[DbProjectPostgre.RegisterProjectsResults]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool UpdateProject(Project project)
+		{
+			bool result = false;
+			DbAccessPostgre db = new DbAccessPostgre();
+
+			try
+			{
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"UPDATE projects " +
+									  @"SET id_funding = @IdFunding, name = @Name, description = @Description, " + 
+									  @"funded = @Funded, ended = @Ended, ended_date = @EndedDate " +
+									  @"WHERE id = @Id;";
+
+					cmd.Parameters.AddWithValue("@Id", project.Id);
+					cmd.Parameters.AddWithValue("@Name", project.Name);
+					cmd.Parameters.AddWithValue("@IdFunding", project.IdFunding);
+					cmd.Parameters.AddWithValue("@Description", project.Description);
+					cmd.Parameters.AddWithValue("@Funded", project.Funded);
+					cmd.Parameters.AddWithValue("@Ended", project.Ended);
+					cmd.Parameters.AddWithValue("@EndedDate", project.EndedDate);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbProjectPostgre.UpdateProject]: " + ex.Message);
 			}
 
 			return result;

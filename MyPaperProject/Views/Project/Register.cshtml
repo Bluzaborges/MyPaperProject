@@ -9,9 +9,16 @@
 			<h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Projetos</h5>
 			<div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
 			<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-				<li class="breadcrumb-item">
-					<a href="/Feedback" class="text-muted">Adicionar Projeto</a>
-				</li>
+				@if (Model.Id != 0){
+					<li class="breadcrumb-item">
+						<a href="/Project" class="text-muted">Editar Projeto</a>
+					</li>
+				} else
+				{
+					<li class="breadcrumb-item">
+						<a href="/Project" class="text-muted">Adicionar Projeto</a>
+					</li>
+				}
 			</ul>
 		</div>
 	</div>
@@ -20,18 +27,31 @@
 <form>
 	<div class="card-body">
 		<div class="form-group row">
+			<input id="project-id" value=@Model.Id hidden />
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Nome<span class="text-danger">*</span></label>
 			<div class="col-md-8 col-sm-12">
-				<input id="project-name" type="text" class="form-control" placeholder="Digite o nome do projeto" />
+				<input id="project-name" type="text" class="form-control" placeholder="Digite o nome do projeto" value="@Model.Name" @(Model.Id != 0 && Model.Ended ? "disabled" : "") />
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Área(s) do conhecimento</label>
 			<div class="col-md-8 col-sm-12">
-				<select class="form-control select2" id="select-area" name="param" multiple="multiple">
-					@foreach (Area area in ViewBag.Areas)
+				<select class="form-control select2" id="select-area" name="param" multiple="multiple" @(Model.Id != 0 ? "disabled" : "")>
+					@if (Model.Id == 0)
 					{
-						<option value="@area.Id">@area.Name</option>
+						foreach (Area area in ViewBag.Areas)
+						{
+							<option value="@area.Id">@area.Name</option>
+						}
+					} else
+					{
+						foreach (Area area in ViewBag.Areas)
+						{
+							if (Model.IdAreas.Contains(area.Id))
+							{
+								<option value="@area.Id" selected>@area.Name</option>
+							}
+						}
 					}
 				</select>
 			</div>
@@ -39,16 +59,34 @@
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Docente(s)</label>
 			<div class="col-md-8 col-sm-12">
-				<select class="form-control select2" id="select-teacher" multiple="multiple">
-
+				<select class="form-control select2" id="select-teacher" multiple="multiple" @(Model.Id != 0 ? "disabled" : "")>
+					@if (Model.Id != 0)
+					{
+						foreach (Researcher researcher in ViewBag.Researchers)
+						{
+							if (Model.IdTeachers.Contains(researcher.Id))
+							{
+								<option value="@researcher.Id" selected>@researcher.Name</option>
+							}
+						}
+					}
 				</select>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Pesquisador(es)</label>
 			<div class="col-md-8 col-sm-12">
-				<select class="form-control select2" id="select-researcher" multiple="multiple">
-
+				<select class="form-control select2" id="select-researcher" multiple="multiple" @(Model.Id != 0 ? "disabled" : "")>
+					@if (Model.Id != 0)
+					{
+						foreach (Researcher researcher in ViewBag.Researchers)
+						{
+							if (Model.IdResearchers.Contains(researcher.Id))
+							{
+								<option value="@researcher.Id" selected>@researcher.Name</option>
+							}
+						}
+					}
 				</select>
 			</div>
 		</div>
@@ -56,7 +94,7 @@
 			<div class="checkbox-list">
 				<label class="checkbox">
 					<div class="mr-2 col-md-2 col-sm-12 text-right">Financiado</div>
-					<input type="checkbox" id="funded" class="col-md-8">
+					<input type="checkbox" id="funded" class="col-md-8" @(Model.Id != 0 && Model.Funded ? "checked" : "") @(Model.Id != 0 && Model.Ended ? "disabled" : "") >
 					<span></span>
 				</label>
 			</div>
@@ -64,10 +102,16 @@
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Financiamento</label>
 			<div class="col-md-8 col-sm-12">
-				<select class="form-control select2" id="select-funding" disabled>
+				<select class="form-control select2" id="select-funding" @(Model.Id != 0 && (Model.Funded && !Model.Ended) ? "" : "disabled") >
 					@foreach (Funding funding in ViewBag.Fundings)
 					{
-						<option value="@funding.Id">@funding.Name</option>
+						if (Model.Id != 0 && (Model.Funded && Model.IdFunding == funding.Id))
+						{
+							<option value="@funding.Id" selected>@funding.Name</option>
+						} else
+						{
+							<option value="@funding.Id">@funding.Name</option>
+						}
 					}
 				</select>
 			</div>
@@ -76,7 +120,7 @@
 			<div class="checkbox-list">
 				<label class="checkbox">
 					<div class="mr-2 col-md-2 col-sm-12 text-right">Finalizado</div>
-					<input type="checkbox" id="ended" class="col-md-8">
+					<input type="checkbox" id="ended" class="col-md-8" @(Model.Id != 0 && Model.Ended ? "checked" : "") @(Model.Id != 0 && Model.Ended ? "disabled" : "") >
 					<span></span>
 				</label>
 			</div>
@@ -84,19 +128,19 @@
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Data de término</label>
 			<div class="col-md-8 col-sm-12">
-				<input type="date" class="form-control" id="ended-date" disabled>
+				<input type="date" class="form-control" id="ended-date" value="@(Model.Id != 0 && Model.Ended ? Model.EndedDate.ToString("yyyy-MM-dd") : "")" @(Model.Id != 0 && Model.Ended ? "disabled" : "disabled") >
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
 			<div class="col-md-8 col-sm-12">
-				<textarea class="form-control form-control-solid" id="project-description" rows="3"></textarea>
+				<textarea class="form-control form-control-solid" id="project-description" rows="3" @(Model.Id != 0 && Model.Ended ? "disabled" : "") >@Model.Description</textarea>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Resultado(s)</label>
 			<div class="col-md-8 col-sm-12">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Adicionar resultado</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" @(Model.Id != 0 && Model.Ended ? "disabled" : "")>Adicionar resultado</button>
 			</div>
 		</div>
 
@@ -107,83 +151,84 @@
 		<div id="results-list">
 
 		</div>
-
-	<!-- Modal-->
-	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Adicionar resultado ao projeto</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<i aria-hidden="true" class="ki ki-close"></i>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="card-body">
-							<div class="form-group row">
-								<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Nome<span class="text-danger">*</span></label>
-								<div class="col-md-8 col-sm-12">
-									<input id="result-name" type="text" class="form-control" placeholder="Digite o nome do resultado alcançado" />
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
-								<div class="col-md-8 col-sm-12">
-									<textarea class="form-control form-control-solid" id="result-description" rows="3"></textarea>
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Anexos</label>
-								<div class="col-md-10 col-sm-12">
-									<div class="col-lg-9">
-										<div class="dropzone dropzone-multi" id="kt_dropzone">
-											<div class="dropzone-panel mb-lg-0 mb-2">
-												<a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm">Adicionar Anexo</a>
-											</div>
-											<div class="dropzone-items">
-												<div class="dropzone-item" style="display:none">
-													<div class="dropzone-file">
-														<div class="dropzone-filename" title="some_image_file_name.jpg">
-															<span data-dz-name="">some_image_file_name.jpg</span>
-															<strong>
-																(<span data-dz-size="">340kb</span>)
-															</strong>
-														</div>
-														<div class="dropzone-error" data-dz-errormessage=""></div>
-													</div>
-													<div class="dropzone-progress">
-														<div class="progress">
-															<div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
-														</div>
-													</div>
-													<div class="dropzone-toolbar">
-														<span class="dropzone-delete" data-dz-remove="">
-															<i class="flaticon2-cross"></i>
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<span class="form-text text-muted">Tamanho máximo de arquivo: 10GB e número máximo de arquivos: 10.</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Fechar</button>
-					<button type="button" class="btn btn-primary font-weight-bold" id="btnSubmitResult" data-dismiss="modal">Salvar</button>
-				</div>
-			</div>
-		</div>
 	</div>
 </form>
 
 <div class="card-footer">
 	<div class="col-md-12 text-lg-right">
 		<button type="button" class="btn btn-secondary" id="btnBack" onclick="location.href='/Project/Index'">Voltar</button>
-		<button type="button" class="btn btn-success mr-2" id="btnSubmit">Salvar</button>
+		<button type="button" class="btn btn-success mr-2" id="btnSubmit" @(Model.Id != 0 && Model.Ended ? "disabled" : "")>Salvar</button>
+	</div>
+</div>
+
+<!-- Modal-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Adicionar resultado ao projeto</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i aria-hidden="true" class="ki ki-close"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="card-body">
+						<div class="form-group row">
+							<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Nome<span class="text-danger">*</span></label>
+							<div class="col-md-8 col-sm-12">
+								<input id="result-name" type="text" class="form-control" placeholder="Digite o nome do resultado alcançado" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
+							<div class="col-md-8 col-sm-12">
+								<textarea class="form-control form-control-solid" id="result-description" rows="3"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Anexos</label>
+							<div class="col-md-10 col-sm-12">
+								<div class="col-lg-9">
+									<div class="dropzone dropzone-multi" id="kt_dropzone">
+										<div class="dropzone-panel mb-lg-0 mb-2">
+											<a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm">Adicionar Anexo</a>
+										</div>
+										<div class="dropzone-items">
+											<div class="dropzone-item" style="display:none">
+												<div class="dropzone-file">
+													<div class="dropzone-filename" title="some_image_file_name.jpg">
+														<span data-dz-name="">some_image_file_name.jpg</span>
+														<strong>
+															(<span data-dz-size="">340kb</span>)
+														</strong>
+													</div>
+													<div class="dropzone-error" data-dz-errormessage=""></div>
+												</div>
+												<div class="dropzone-progress">
+													<div class="progress">
+														<div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
+													</div>
+												</div>
+												<div class="dropzone-toolbar">
+													<span class="dropzone-delete" data-dz-remove="">
+														<i class="flaticon2-cross"></i>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<span class="form-text text-muted">Tamanho máximo de arquivo: 10GB e número máximo de arquivos: 10.</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-primary font-weight-bold" id="btnSubmitResult" data-dismiss="modal">Salvar</button>
+			</div>
+		</div>
 	</div>
 </div>

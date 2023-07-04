@@ -145,12 +145,12 @@ function LoadResearchersTable() {
                 template: function (row) {
 
                     var output = '\
-	                     <a href="/Appointment/Edit?id=' + row.id + '" class="btn btn-sm btn-icon btn-bg-light btn-icon-primary btn-hover-primary mx-1" title="Editar">\
+	                     <a href="/Researcher/Edit?id=' + row.id + '" class="btn btn-sm btn-icon btn-bg-light btn-icon-primary btn-hover-primary mx-1" title="Editar">\
 		                    <i class="fas fa-edit"></i>\
 	                    </a>';
 
                     output += '\
-                        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger btn-delete" idAppointment = "' + row.id + '" title = "Excluir" >\
+                        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger btn-delete" idResearcher = "' + row.id + '" title = "Excluir" >\
 		                    <i class="flaticon-delete-1"></i>\
 	                    </a>';
 

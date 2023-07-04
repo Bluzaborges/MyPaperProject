@@ -1,5 +1,6 @@
 ﻿
 jQuery(document).ready(function () {
+    ConfigureResults();
     ConfigureDropzone();
 });
 
@@ -98,6 +99,23 @@ $("#btnSubmitResult").click(function () {
         }
     });
 });
+
+function ConfigureResults() {
+
+    var idResult = $("#project-id").val();
+
+    $.ajax({
+        url: "/Result/GetAllResultsByIdProject",
+        type: "POST",
+        data: JSON.stringify(idResult),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+            for (let i = 0; i < data.length; i++)
+                LoadResults(data[i]);
+        }
+    });
+}
 
 function LoadResults(idResult) {
 

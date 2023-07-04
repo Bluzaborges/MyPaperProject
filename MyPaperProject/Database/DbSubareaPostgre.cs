@@ -50,9 +50,9 @@ namespace MyPaperProject.Database
 			return result;
 		}
 
-        public List<string> GetAllSubareasNamesByIdResearcher(int idResearcher)
+        public List<Subarea> GetAllSubareasByIdResearcher(int idResearcher)
         {
-            List<string> result = new List<string>();
+            List<Subarea> result = new List<Subarea>();
 
             try
             {
@@ -60,7 +60,7 @@ namespace MyPaperProject.Database
 
                 using (NpgsqlCommand cmd = new NpgsqlCommand())
                 {
-                    cmd.CommandText = @"SELECT s.name " +
+                    cmd.CommandText = @"SELECT s.id, s.name " +
                                       @"FROM researchers_subareas AS rs, subareas AS s " +
                                       @"WHERE rs.id_researcher = @IdResearcher AND rs.id_subarea = s.id " +
                                       @"ORDER BY s.name;";
@@ -72,8 +72,15 @@ namespace MyPaperProject.Database
                     {
                         while (reader.Read())
                         {
-                            if (reader["name"] != DBNull.Value)
-                                result.Add(reader["name"].ToString());
+							Subarea subarea = new Subarea();
+
+							if (reader["id"] != DBNull.Value)
+								subarea.Id = Convert.ToInt32(reader["id"]);
+
+							if (reader["name"] != DBNull.Value)
+                                subarea.Name = reader["name"].ToString();
+
+							result.Add(subarea);
                         }
                     }
                 }

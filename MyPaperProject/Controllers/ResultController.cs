@@ -110,5 +110,15 @@ namespace MyPaperProject.Controllers
 
 			return new JsonResult(fileInfo);
 		}
+
+		[HttpPost]
+		public JsonResult GetAllResultsByIdProject([FromBody] int idProject)
+		{
+			DbResultPostgre dbResult = new DbResultPostgre();
+
+			List<int> results = dbResult.GetAllResultsByIdProject(idProject);
+
+			return Json(results);
+		}
 	}
 }
