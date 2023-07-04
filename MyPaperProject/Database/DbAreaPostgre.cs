@@ -45,5 +45,42 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
+
+		public List<string> GetAllAreasNamesByIdResearcher(int idResearcher)
+		{
+            List<string> result = new List<string>();
+
+            try
+            {
+                DbAccessPostgre db = new DbAccessPostgre();
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.CommandText = @"SELECT a.name " +
+									  @"FROM researchers_areas AS ra, areas AS a " +
+									  @"WHERE ra.id_researcher = @IdResearcher AND ra.id_area = a.id " +
+                                      @"ORDER BY a.name;";
+
+					cmd.Parameters.AddWithValue("IdResearcher", idResearcher);
+
+                    using (cmd.Connection = db.OpenConnection())
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["name"] != DBNull.Value)
+                                result.Add(reader["name"].ToString());
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Add(LogType.error, "[DbArea.GetAllAreasNamesByIdResearcher]: " + ex.Message);
+            }
+
+            return result;
+        }
 	}
 }

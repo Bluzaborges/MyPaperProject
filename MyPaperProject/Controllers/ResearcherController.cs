@@ -73,8 +73,16 @@ namespace MyPaperProject.Controllers
 		public JsonResult GetAllResearchers()
 		{
 			DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+            DbAreaPostgre dbArea = new DbAreaPostgre();
+            DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
 
 			List<Researcher> researchers = dbResearcher.GetAllResearchers();
+
+            foreach (Researcher researcher in researchers)
+            {
+                researcher.nameAreas = dbArea.GetAllAreasNamesByIdResearcher(researcher.Id);
+                researcher.nameSubareas = dbSubarea.GetAllSubareasNamesByIdResearcher(researcher.Id);
+            }
 
 			return Json(researchers);
 		}

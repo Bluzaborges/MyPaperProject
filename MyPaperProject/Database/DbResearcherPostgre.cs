@@ -153,6 +153,7 @@ namespace MyPaperProject.Database
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
 					cmd.CommandText = @"SELECT * FROM researchers " +
+									  @"WHERE deleted = false " +
 									  @"ORDER BY name;";
 
 					using (cmd.Connection = db.OpenConnection())

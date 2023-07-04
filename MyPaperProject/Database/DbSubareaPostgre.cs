@@ -49,5 +49,42 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
-	}
+
+        public List<string> GetAllSubareasNamesByIdResearcher(int idResearcher)
+        {
+            List<string> result = new List<string>();
+
+            try
+            {
+                DbAccessPostgre db = new DbAccessPostgre();
+
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.CommandText = @"SELECT s.name " +
+                                      @"FROM researchers_subareas AS rs, subareas AS s " +
+                                      @"WHERE rs.id_researcher = @IdResearcher AND rs.id_subarea = s.id " +
+                                      @"ORDER BY s.name;";
+
+                    cmd.Parameters.AddWithValue("IdResearcher", idResearcher);
+
+                    using (cmd.Connection = db.OpenConnection())
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader["name"] != DBNull.Value)
+                                result.Add(reader["name"].ToString());
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Add(LogType.error, "[DbArea.GetAllSubareasNamesByIdResearcher]: " + ex.Message);
+            }
+
+            return result;
+        }
+    }
 }
