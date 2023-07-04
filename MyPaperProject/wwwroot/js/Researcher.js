@@ -164,3 +164,55 @@ function LoadResearchersTable() {
 jQuery(document).ready(function () {
     LoadResearchersTable();
 });
+
+$("#researcher-table").on("click", ".btn-delete", function (e) {
+
+    var selectedItem = $(this);
+
+    Swal.fire({
+        title: "Deseja realmente excluir?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sim, excluir!",
+        cancelButtonText: "Não, cancelar!",
+        reverseButtons: true
+    }).then(function (result) {
+        if (result.value) {
+
+            $.ajax({
+                url: "/Researcher/DeleteResearcher",
+                type: "POST",
+                data: JSON.stringify($(selectedItem).attr("idResearcher")),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success("Excluido!", 'Sucesso!');
+                        datatable.reload();
+                    } else {
+                        Swal.fire({
+                            title: "Atenção",
+                            html: data.message + '<br><p style="color: silver; margin-top:12px; font-weight: normal;">Clique em ok para fechar.</p>',
+                            icon: 'error',
+                            timerProgressBar: true,
+                            confirmButtonText: "Ok",
+                            customClass: {
+                                confirmButton: "btn btn-primary",
+                            }
+
+                        })
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.error(xhr);
+                    console.error(ajaxOptions);
+                    console.error(thrownError);
+                    toastr.error(thrownError, 'Atenção!');
+                }
+            });
+
+        }
+    });
+
+});

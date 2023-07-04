@@ -2,6 +2,7 @@
 using MyPaperProject.Models;
 using MyPaperProject.Models.Repositories;
 using Npgsql;
+using System.Xml.Linq;
 
 namespace MyPaperProject.Database
 {
@@ -357,5 +358,70 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
-    }
+
+		public bool ResearcherHaveProject(int idResearcher)
+		{
+			bool result = false;
+			int count = 0;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT COUNT(*) FROM projects_researchers " +
+									  @"WHERE id_researcher = @IdResearcher;";
+
+					cmd.Parameters.AddWithValue("@IdResearcher", idResearcher);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						count = Convert.ToInt32(cmd.ExecuteScalar());
+
+						if (count > 0)
+							result = true;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcher.ResearcherHaveProject]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool DeleteResearcherById(int id)
+		{
+			bool result = false;
+			DbAccessPostgre db = new DbAccessPostgre();
+
+			try
+			{
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"UPDATE researchers " +
+									  @"SET deleted = true, deleted_date = @DeletedDate " +
+									  @"WHERE id = @Id;";
+
+					cmd.Parameters.AddWithValue("@Id", id);
+					cmd.Parameters.AddWithValue("@DeletedDate", DateTime.Now);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcher.DeleteResearcherById]: " + ex.Message);
+			}
+
+			return result;
+		}
+	}
 }

@@ -124,5 +124,29 @@ namespace MyPaperProject.Controllers
 
             return Json(researchers);
         }
+
+		[HttpPost]
+		public JsonResult DeleteResearcher([FromBody] int id)
+		{
+			DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+			var result = false;
+
+			try
+			{
+				if (id == 0)
+					return Json(new { success = result, message = "Não foi possível deletar o pesquisador." });
+
+				if (dbResearcher.ResearcherHaveProject(id))
+					return Json(new { success = result, message = "O pesquisador possui vínculo com 1 ou mais projetos." });
+
+				result = dbResearcher.DeleteResearcherById(id);
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[ResearcherController.DeleteResearcher]: " + ex.Message);
+			}
+
+			return Json(new { success = result, message = "" });
+		}
 	}
 }

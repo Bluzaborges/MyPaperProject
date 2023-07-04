@@ -138,6 +138,5 @@ namespace MyPaperProject.Controllers
 
             return Json(projects);
         }
-
-    }
+	}
 }

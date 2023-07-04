@@ -179,11 +179,6 @@ function LoadProjectsTable() {
 		                    <i class="fas fa-edit"></i>\
 	                    </a>';
 
-                    output += '\
-                        <a class="btn btn-sm btn-icon btn-bg-light btn-icon-danger btn-hover-danger btn-delete" idProject = "' + row.id + '" title = "Excluir" >\
-		                    <i class="flaticon-delete-1"></i>\
-	                    </a>';
-
                     return output;
                 }
             },
@@ -194,4 +189,3 @@ function LoadProjectsTable() {
 jQuery(document).ready(function () {
     LoadProjectsTable();
 });
-
