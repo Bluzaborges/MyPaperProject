@@ -52,6 +52,9 @@ namespace MyPaperProject.Controllers
 					for (int i = 0; i < project.IdResearchers.Count; i++)
 						dbProject.RegisterProjectsResearchers(idProject, project.IdResearchers[i]);
 
+					for (int i = 0; i < project.IdResults.Count; i++)
+						dbProject.RegisterProjectsResults(idProject, project.IdResults[i]);
+
 					result = true;
 
 				} else

@@ -90,19 +90,92 @@
 		<div class="form-group row">
 			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
 			<div class="col-md-8 col-sm-12">
-				<textarea class="form-control form-control-solid" id="description" rows="3"></textarea>
+				<textarea class="form-control form-control-solid" id="project-description" rows="3"></textarea>
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-lg-3 col-form-label text-lg-right">Resultados:</label>
-			<div class="col-lg-6">
-				<div class="uppy" id="kt_uppy_5">
-					<div class="uppy-wrapper"></div>
-					<div class="uppy-list"></div>
-					<div class="uppy-status"></div>
-					<div class="uppy-informer uppy-informer-min"></div>
+			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Resultado(s)</label>
+			<div class="col-md-8 col-sm-12">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Adicionar resultado</button>
+			</div>
+		</div>
+
+		<div class="separator separator-dashed my-10"></div>
+
+		<h3 class=" text-dark font-weight-bold col-md-2 col-sm-12 text-sm-left text-md-right">Resultados:</h3>
+
+		<div id="results-list">
+
+		</div>
+
+	<!-- Modal-->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Adicionar resultado ao projeto</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<i aria-hidden="true" class="ki ki-close"></i>
+					</button>
 				</div>
-				<span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+				<div class="modal-body">
+					<form>
+						<div class="card-body">
+							<div class="form-group row">
+								<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Nome<span class="text-danger">*</span></label>
+								<div class="col-md-8 col-sm-12">
+									<input id="result-name" type="text" class="form-control" placeholder="Digite o nome do resultado alcançado" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
+								<div class="col-md-8 col-sm-12">
+									<textarea class="form-control form-control-solid" id="result-description" rows="3"></textarea>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Anexos</label>
+								<div class="col-md-10 col-sm-12">
+									<div class="col-lg-9">
+										<div class="dropzone dropzone-multi" id="kt_dropzone">
+											<div class="dropzone-panel mb-lg-0 mb-2">
+												<a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm">Adicionar Anexo</a>
+											</div>
+											<div class="dropzone-items">
+												<div class="dropzone-item" style="display:none">
+													<div class="dropzone-file">
+														<div class="dropzone-filename" title="some_image_file_name.jpg">
+															<span data-dz-name="">some_image_file_name.jpg</span>
+															<strong>
+																(<span data-dz-size="">340kb</span>)
+															</strong>
+														</div>
+														<div class="dropzone-error" data-dz-errormessage=""></div>
+													</div>
+													<div class="dropzone-progress">
+														<div class="progress">
+															<div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
+														</div>
+													</div>
+													<div class="dropzone-toolbar">
+														<span class="dropzone-delete" data-dz-remove="">
+															<i class="flaticon2-cross"></i>
+														</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<span class="form-text text-muted">Tamanho máximo de arquivo: 10GB e número máximo de arquivos: 10.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-primary font-weight-bold" id="btnSubmitResult" data-dismiss="modal">Salvar</button>
+				</div>
 			</div>
 		</div>
 	</div>

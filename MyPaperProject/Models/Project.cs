@@ -6,6 +6,7 @@
 		public List<int> IdAreas { get; set; }
 		public List<int> IdResearchers { get; set; }
 		public List<int> IdTeachers { get; set; }
+		public List<int> IdResults { get; set; }
 		public int IdFunding { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }

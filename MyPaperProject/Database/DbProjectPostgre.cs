@@ -110,5 +110,37 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
+
+		public bool RegisterProjectsResults(int idProject, int idResult)
+		{
+			bool result = false;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"INSERT INTO projects_results (id_project, id_result) " +
+									  @"VALUES (@Idproject, @IdResult);";
+
+					cmd.Parameters.AddWithValue("@Idproject", idProject);
+					cmd.Parameters.AddWithValue("@IdResult", idResult);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbProjectPostgre.RegisterProjectsResults]: " + ex.Message);
+			}
+
+			return result;
+		}
 	}
 }

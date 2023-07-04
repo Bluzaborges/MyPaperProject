@@ -36,6 +36,7 @@ var KTSelect2 = function () {
 jQuery(document).ready(function () {
 
     KTSelect2.init();
+    ConfigureDropzone();
 
     $.ajax({
         url: "/Area/GetAllAreas",
@@ -151,6 +152,13 @@ function addStudents(selectedAreaValues) {
 
 $("#btnSubmit").click(function () {
 
+    const idResults = document.querySelectorAll(".accordion");
+
+    const idResultList = [];
+
+    for (let i = 0; i < idResults.length; i++)
+        idResultList.push(idResults[i].id);
+
     var formData = {
         name: $("#project-name").val(),
         idAreas: $("#select-area").val(),
@@ -160,7 +168,8 @@ $("#btnSubmit").click(function () {
         idFunding: $("#funded").prop('checked') == true ? $("#select-funding").val() : 0,
         ended: $("#ended").prop('checked'),
         endedDate: $("#ended").prop('checked') == false || $("#ended-date").val() == "" ? "0001-01-01" : $("#ended-date").val(),
-        description: $("#description").val()
+        description: $("#project-description").val(),
+        idResults: idResultList
     };
 
     $.ajax({

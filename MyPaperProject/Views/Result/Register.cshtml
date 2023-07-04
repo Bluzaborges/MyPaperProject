@@ -5,46 +5,59 @@
 <form>
 	<div class="card-body">
 		<div class="form-group row">
-			<label class="col-lg-3 col-form-label text-lg-right">Full Name:</label>
-			<div class="col-lg-6">
-				<input type="text" class="form-control" placeholder="Enter full name" name="name" />
-				<span class="form-text text-muted">Please enter your full name</span>
+			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Nome<span class="text-danger">*</span></label>
+			<div class="col-md-8 col-sm-12">
+				<input id="result-name" type="text" class="form-control" placeholder="Digite o nome do resultado alcançado" />
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-lg-3 col-form-label text-lg-right">Email:</label>
-			<div class="col-lg-6">
-				<input type="email" class="form-control" placeholder="Enter email" name="email" />
-				<span class="form-text text-muted">Please enter your email</span>
+			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Descrição</label>
+			<div class="col-md-8 col-sm-12">
+				<textarea class="form-control form-control-solid" id="description" rows="3"></textarea>
 			</div>
 		</div>
 		<div class="form-group row">
-			<label class="col-lg-3 col-form-label text-lg-right">Message:</label>
-			<div class="col-lg-6">
-				<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Please enter your message"></textarea>
-				<span class="form-text text-muted">We'll never share your message with anyone else.</span>
-			</div>
-		</div>
-		<div class="form-group row">
-			<label class="col-lg-3 col-form-label text-lg-right">Upload File:</label>
-			<div class="col-lg-6">
-				<div class="uppy" id="kt_uppy_5">
-					<div class="uppy-wrapper"></div>
-					<div class="uppy-list"></div>
-					<div class="uppy-status"></div>
-					<div class="uppy-informer uppy-informer-min"></div>
+			<label class="col-form-label col-md-2 col-sm-12 text-sm-left text-md-right">Anexos</label>
+			<div class="col-md-10 col-sm-12">
+				<div class="col-lg-9">
+					<div class="dropzone dropzone-multi" id="kt_dropzone">
+						<div class="dropzone-panel mb-lg-0 mb-2">
+							<a class="dropzone-select btn btn-light-primary font-weight-bold btn-sm">Adicionar Anexo</a>
+						</div>
+						<div class="dropzone-items" style="width:50%">
+							<div class="dropzone-item" style="display:none">
+								<div class="dropzone-file">
+									<div class="dropzone-filename" title="some_image_file_name.jpg">
+										<span data-dz-name="">some_image_file_name.jpg</span>
+										<strong>
+											(<span data-dz-size="">340kb</span>)
+										</strong>
+									</div>
+									<div class="dropzone-error" data-dz-errormessage=""></div>
+								</div>
+								<div class="dropzone-progress">
+									<div class="progress">
+										<div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress=""></div>
+									</div>
+								</div>
+								<div class="dropzone-toolbar">
+									<span class="dropzone-delete" data-dz-remove="">
+										<i class="flaticon2-cross"></i>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<span class="form-text text-muted">Tamanho máximo de arquivo: 10GB e número máximo de arquivos: 10.</span>
 				</div>
-				<span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
-			</div>
-		</div>
-	</div>
-	<div class="card-footer">
-		<div class="row">
-			<div class="col-lg-3"></div>
-			<div class="col-lg-6">
-				<button type="reset" class="btn btn-primary">Submit</button>
-				<button type="reset" class="btn btn-secondary">Cancel</button>
 			</div>
 		</div>
 	</div>
 </form>
+
+<div class="card-footer">
+	<div class="col-md-12 text-lg-right">
+		<button type="button" class="btn btn-secondary" id="btnBack" onclick="location.href='/Project/Index'">Voltar</button>
+		<button type="button" class="btn btn-success mr-2" id="btnSubmit">Salvar</button>
+	</div>
+</div>

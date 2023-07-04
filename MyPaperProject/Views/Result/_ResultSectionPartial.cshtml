@@ -1,0 +1,46 @@
+﻿
+<div class="form-group row">
+	<label class="col-form-label col-md-1 col-sm-12 text-sm-left text-md-right"></label>
+	<div class="accordion accordion-solid accordion-toggle-plus mt-4 ml-6 col-md-4" id="@Model.Id">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title collapsed" data-toggle="collapse" data-target="@("#collapseOne" + Model.Id)" aria-expanded="false">
+					@Model.Name
+				</div>
+			</div>
+			<div id="@("collapseOne" + Model.Id)" class="collapse">
+				<div class="card-body" id="teste">
+				    <span class="text-muted mr-6">Adicionado em @Model.CreationDate</span>
+				    <p>@Model.Description</p>
+                    <div class="separator separator-solid my-7"></div>
+                    <div>
+                        <span class="d-flex align-items-center text-dark font-size-h5 font-weight-bold mr-3" style="padding-bottom:15px">Anexos</span>
+                        <div class="table-responsive">
+                            <table class="table table-head-custom table-head-bg table-borderless table-vertical-center">
+                                <tbody id="attachment-list">
+                                    @foreach (Attachment attachment in Model.Attachments)
+                                    {
+                                        <tr>
+                                            <td class="pl-0 py-2">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="symbol symbol-40 symbol-light mr-4">
+                                                        <span class="symbol-label">
+                                                            <img src="/assets/media/custom_img/attachment_file.png" class="h-75 align-self-middle" alt="">
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex flex-column flex-grow-1">
+                                                        <a href="/Result/DownloadAttachment?attachmentId=@attachment.Id" class="text-dark text-hover-primary mb-1 font-size-lg">@attachment.Name</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+		        </div>  
+	        </div>
+        </div>
+	</div>
+</div>
