@@ -13,7 +13,7 @@
         public static string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
 		//Diretório de upload de arquivos temporários
-		public static string uploadFilesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\temp-files");
+		public static string uploadFilesPath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\temp-files\");
 
 		public static bool LoadAppSettings()
         {

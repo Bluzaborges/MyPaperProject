@@ -40,7 +40,7 @@ namespace MyPaperProject.Database
 
 			} catch(Exception ex)
 			{
-				Log.Add(LogType.error, "[DbArea.GetAllAreas]: " + ex.Message);
+				Log.Add(LogType.error, "[DbAreaPostgre.GetAllAreas]: " + ex.Message);
 			}
 
 			return result;
@@ -84,7 +84,7 @@ namespace MyPaperProject.Database
             }
             catch (Exception ex)
             {
-                Log.Add(LogType.error, "[DbArea.GetAllAreasNamesByIdResearcher]: " + ex.Message);
+                Log.Add(LogType.error, "[DbAreaPostgre.GetAllAreasNamesByIdResearcher]: " + ex.Message);
             }
 
             return result;
@@ -128,7 +128,7 @@ namespace MyPaperProject.Database
             }
             catch (Exception ex)
             {
-                Log.Add(LogType.error, "[DbArea.GetAllAreasNamesByIdProject]: " + ex.Message);
+                Log.Add(LogType.error, "[DbAreaPostgre.GetAllAreasNamesByIdProject]: " + ex.Message);
             }
 
             return result;

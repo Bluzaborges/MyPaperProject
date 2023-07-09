@@ -2,6 +2,7 @@
 {
 	public interface ISubareaRepository
 	{
-		public List<Subarea> GetAllSubareas();
-	}
+		List<Subarea> GetAllSubareas();
+		List<Subarea> GetAllSubareasByIdResearcher(int idResearcher);
+    }
 }

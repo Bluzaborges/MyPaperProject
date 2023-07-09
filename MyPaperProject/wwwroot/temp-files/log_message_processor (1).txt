@@ -1,0 +1,694 @@
+24/06/2023 21:06:08 - -----------------------------------------------------------
+24/06/2023 21:06:08 - EnttryMessageProcessor versão: 23.6.2
+24/06/2023 21:06:08 - Serviço iniciado
+24/06/2023 21:06:08 - Estatísticas de mensagens recebidas habilitado
+24/06/2023 21:06:08 - MessageProcessor 1 iniciado
+24/06/2023 21:06:08 - MessageProcessor 3 iniciado
+24/06/2023 21:06:08 - MessageProcessor 4 iniciado
+24/06/2023 21:06:08 - MessageProcessor 2 iniciado
+24/06/2023 21:06:08 - Monitoramento de sites offline iniciado
+24/06/2023 21:06:08 - Monitoramento de equipamentos offline iniciado
+24/06/2023 21:06:08 - MessageProcessor 5 iniciado
+24/06/2023 21:06:08 - MessageProcessor 6 iniciado
+24/06/2023 21:06:08 - MessageProcessor 7 iniciado
+24/06/2023 21:06:08 - MessageProcessor 8 iniciado
+26/06/2023 00:20:06 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 00:24:59 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (446113, Jun 26 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+26/06/2023 00:24:59 - Erro - UpdateDailySummary, idClient: 1619, idSite: 67288, idEquipment: 1619, idDataType: 1, response: 296673
+26/06/2023 01:13:22 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 01:33:43 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (456309, Jun 26 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+26/06/2023 01:33:43 - Erro - UpdateDailySummary, idClient: 101, idSite: 68043, idEquipment: 101, idDataType: 1, response: 89249
+26/06/2023 01:42:20 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 01:53:45 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 02:33:34 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 02:45:06 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 02:56:34 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 02:58:12 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 03:25:53 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 03:41:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 03:54:52 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 04:17:45 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 04:30:48 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 04:43:12 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 05:08:03 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 05:20:01 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 05:48:04 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 06:00:16 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 06:47:02 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 07:03:32 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 07:14:53 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 07:27:21 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 07:41:26 - QueryResult não processada por data inválida - response: data:23/05/2031 18:45:21
+26/06/2023 08:31:01 - Erro - EventSite.CheckSiteOnlineEvent: Transaction (Process ID 96) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+26/06/2023 11:14:32 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 11:39:09 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 58) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+26/06/2023 16:29:33 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 17:17:20 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 17:19:31 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+26/06/2023 17:22:36 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 92) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+26/06/2023 17:27:44 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 67) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+26/06/2023 23:56:10 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 00:01:46 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 00:16:28 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 00:51:54 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 01:32:09 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 01:43:32 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 02:06:31 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 02:42:07 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 02:47:10 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 03:16:31 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 03:41:58 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 04:19:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 04:24:02 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 04:42:20 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 05:08:07 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 05:19:16 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 05:30:18 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 06:08:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 06:57:34 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 07:37:37 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 07:49:25 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 08:02:28 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (452926, Jun 27 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+27/06/2023 08:02:28 - Erro - UpdateDailySummary, idClient: 73, idSite: 65774, idEquipment: 73, idDataType: 1, response: 25629
+27/06/2023 08:56:05 - QueryResult não processada por data inválida - response:148548 data:26/07/2035 19:08:00
+27/06/2023 09:00:20 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (475162, Jun 27 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+27/06/2023 09:00:20 - Erro - UpdateDailySummary, idClient: 1779, idSite: 62450, idEquipment: 1779, idDataType: 1, response: 236362
+27/06/2023 09:06:16 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (478613, Jun 27 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+27/06/2023 09:06:16 - Erro - UpdateDailySummary, idClient: 1237, idSite: 73078, idEquipment: 1237, idDataType: 1, response: 445843
+27/06/2023 09:17:23 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 09:32:59 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 11:50:27 - Erro - Summary.UpdateClientsDailySummary: Transaction (Process ID 98) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+27/06/2023 14:17:17 - Erro - Summary.UpdateClientsDailySummary: Transaction (Process ID 118) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:174291 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:HP LaserJet MFP M426dw data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:BRBSLBL2V1 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:48 0F CF FC 13 2E data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:8509 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:45 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:7951 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:6461 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:6321 data:10/07/2034 08:28:56
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:255052 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:RICOH MP 501 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:G988X266074 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:00 26 73 F2 82 98 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:249104 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:5948 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:90 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:59931 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:1 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:290 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:291 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:RICOH SP 4510SF data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:T595H800485 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:00 26 73 C0 45 56 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:1587 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:100 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:0 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:703 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:614 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:28:57
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:28:58
+27/06/2023 14:47:21 - QueryResult não processada por data inválida - response:1317 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:167711 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:RICOH MP 402SPF data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:Y178H703157 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:00 26 73 FA F3 45 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:148889 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:14522 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:20 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:16991 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:280742 data:10/07/2034 08:28:58
+27/06/2023 14:47:22 - QueryResult não processada por data inválida - response:399 data:10/07/2034 08:28:58
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:174291 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:HP LaserJet MFP M426dw data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:BRBSLBL2V1 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:48 0F CF FC 13 2E data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:8509 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:45 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:7951 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:6461 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:6321 data:10/07/2034 08:30:41
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:255053 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:RICOH MP 501 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:G988X266074 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:00 26 73 F2 82 98 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:249105 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:5948 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:Sem papel: Bandeja 1 {13200} data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:90 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:59931 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:1 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:290 data:10/07/2034 08:30:42
+27/06/2023 14:49:04 - QueryResult não processada por data inválida - response:291 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:255053 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:RICOH MP 501 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:G988X266074 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:00 26 73 F2 82 98 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:249105 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:5948 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:Sem papel: Bandeja 1 {13200} data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:90 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:59931 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:1 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:290 data:10/07/2034 08:30:42
+27/06/2023 14:49:05 - QueryResult não processada por data inválida - response:291 data:10/07/2034 08:30:43
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:RICOH SP 4510SF data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:T595H800485 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:00 26 73 C0 45 56 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:1587 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:100 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:0 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:703 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:614 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:30:42
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:30:43
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:1317 data:10/07/2034 08:30:43
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:167711 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:RICOH MP 402SPF data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:Y178H703157 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:00 26 73 FA F3 45 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:148889 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:14522 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:20 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:16991 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:280742 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:399 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:174291 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:HP LaserJet MFP M426dw data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:BRBSLBL2V1 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:48 0F CF FC 13 2E data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:8509 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:45 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:7951 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:6461 data:10/07/2034 08:30:44
+27/06/2023 14:49:07 - QueryResult não processada por data inválida - response:6321 data:10/07/2034 08:30:44
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:255053 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:RICOH MP 501 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:G988X266074 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:00 26 73 F2 82 98 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:249105 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:5948 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:Sem papel: Bandeja 1 {13200} data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:90 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:59931 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:1 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:290 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:291 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:174291 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:HP LaserJet MFP M426dw data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:BRBSLBL2V1 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:48 0F CF FC 13 2E data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:8509 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:45 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:7951 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:6461 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:6321 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:255053 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:RICOH MP 501 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:G988X266074 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:00 26 73 F2 82 98 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:249105 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:5948 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:Sem papel: Bandeja 1 {13200} data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:90 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:59931 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:1 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:290 data:10/07/2034 08:30:42
+27/06/2023 14:49:08 - QueryResult não processada por data inválida - response:291 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:167711 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:RICOH MP 402SPF data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:Y178H703157 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:00 26 73 FA F3 45 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:148889 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:14522 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:20 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:16991 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:280742 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:399 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:RICOH SP 4510SF data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:T595H800485 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:00 26 73 C0 45 56 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:1587 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:100 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:0 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:703 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:614 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:1317 data:10/07/2034 08:30:43
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:255053 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:RICOH MP 501 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:G988X266074 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:00 26 73 F2 82 98 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:249105 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:5948 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:Sem papel: Bandeja 1 {13200} data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:90 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:59931 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:1 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:290 data:10/07/2034 08:30:45
+27/06/2023 14:49:09 - QueryResult não processada por data inválida - response:291 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:167711 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:RICOH MP 402SPF data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:Y178H703157 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:00 26 73 FA F3 45 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:148889 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:14522 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:20 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:16991 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:280742 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:399 data:10/07/2034 08:30:43
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:RICOH SP 4510SF data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:T595H800485 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:00 26 73 C0 45 56 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:1587 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:100 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:0 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:703 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:614 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:30 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:95089 data:10/07/2034 08:30:45
+27/06/2023 14:49:10 - QueryResult não processada por data inválida - response:1317 data:10/07/2034 08:30:45
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:167711 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:RICOH MP 402SPF data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:Y178H703157 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:00 26 73 FA F3 45 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:148889 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:14522 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:20 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:3 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:16991 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:280742 data:10/07/2034 08:30:46
+27/06/2023 14:49:13 - QueryResult não processada por data inválida - response:399 data:10/07/2034 08:30:46
+27/06/2023 15:22:23 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 97) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+27/06/2023 15:33:05 - QueryResult não processada por data inválida - response:325779 data:01/09/2031 12:30:24
+27/06/2023 15:33:05 - QueryResult não processada por data inválida - response:6 data:01/09/2031 12:30:30
+27/06/2023 15:57:28 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 96) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:10123 data:05/07/2023 16:02:05
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:Canon GX6000 series 1.030 data:05/07/2023 16:02:05
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:KNDL05227 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:34 9F 7B CB 00 46 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:5643 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:4062 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:90 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:02:06
+27/06/2023 16:10:59 - QueryResult não processada por data inválida - response:3 data:05/07/2023 16:02:06
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:10123 data:05/07/2023 16:07:07
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:Canon GX6000 series 1.030 data:05/07/2023 16:07:07
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:KNDL05227 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:34 9F 7B CB 00 46 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:5643 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:4062 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:90 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:3 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:10123 data:05/07/2023 16:07:07
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:Canon GX6000 series 1.030 data:05/07/2023 16:07:07
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:KNDL05227 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:34 9F 7B CB 00 46 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:5643 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:4062 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:90 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:00 - QueryResult não processada por data inválida - response:3 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:10123 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:Canon GX6000 series 1.030 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:KNDL05227 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:34 9F 7B CB 00 46 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:5643 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:4062 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:90 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:100 data:05/07/2023 16:07:08
+27/06/2023 16:16:02 - QueryResult não processada por data inválida - response:3 data:05/07/2023 16:07:08
+27/06/2023 18:28:27 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+27/06/2023 18:28:36 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 84) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+27/06/2023 18:28:41 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 111) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+27/06/2023 18:28:44 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 119) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+27/06/2023 18:29:00 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 84) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+27/06/2023 18:30:02 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 111) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+27/06/2023 18:44:38 - QueryResult não processada por data inválida - response: data:28/06/2037 00:59:31
+27/06/2023 21:03:21 - Erro - EventEquipment.SendEquipmentChangeCylinderEvent: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__events__id_event__51EF2864". The conflict occurred in database "printscout", table "dbo.event_rules", column 'id'.
+Changed database context to 'printscout'.
+The statement has been terminated.
+27/06/2023 21:03:25 - Erro - EventEquipment.SendEquipmentChangeCylinderEvent: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__events__id_event__51EF2864". The conflict occurred in database "printscout", table "dbo.event_rules", column 'id'.
+Changed database context to 'printscout'.
+The statement has been terminated.
+27/06/2023 21:03:25 - Erro - EventEquipment.SendEquipmentChangeCylinderEvent: The INSERT statement conflicted with the FOREIGN KEY constraint "FK__events__id_event__51EF2864". The conflict occurred in database "printscout", table "dbo.event_rules", column 'id'.
+Changed database context to 'printscout'.
+The statement has been terminated.
+27/06/2023 22:48:39 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 00:41:20 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 02:18:32 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 02:45:42 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 03:13:48 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 03:37:28 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 04:22:50 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 04:25:38 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 09:18:13 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (458607, Jun 28 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+28/06/2023 09:18:13 - Erro - UpdateDailySummary, idClient: 1619, idSite: 69889, idEquipment: 1619, idDataType: 1, response: 64867
+28/06/2023 10:26:05 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 96) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+28/06/2023 12:42:18 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 81) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+28/06/2023 12:42:23 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 97) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+28/06/2023 12:42:26 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 93) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+28/06/2023 12:42:27 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 84) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+28/06/2023 12:42:28 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 97) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+28/06/2023 12:42:38 - Erro - MessageReceived.DeleteMessage: Transaction (Process ID 81) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+Changed database context to 'printscout'.
+28/06/2023 13:15:21 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 13:38:48 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 13:40:53 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:Samsung SCX-483x 5x3x Series data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:Z5W1BJECA0003WT data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:00 15 99 B3 AE F7 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:3 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:5000 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:4250 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:90000 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:100000 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response: 685 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response: 0 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response: 90515 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response: 13929 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response: 105129 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response: 105129 data:04/07/2023 14:10:01
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:85 data:04/07/2023 14:10:03
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:10:03
+28/06/2023 14:10:13 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:10:04
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:3 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:5000 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:4250 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:90000 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:100000 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response: 685 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response: 0 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response: 90518 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response: 13929 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response: 105132 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response: 105132 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:85 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:18 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:11
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:3 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:5000 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:4250 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:90000 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:100000 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 685 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 90518 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 13929 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 105132 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 105132 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:85 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:11
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:11
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:3 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:5000 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:4250 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:90000 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:100000 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 685 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 90518 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 13929 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 105132 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response: 105132 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:85 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:10
+28/06/2023 14:15:19 - QueryResult não processada por data inválida - response:0 data:04/07/2023 14:15:11
+28/06/2023 17:25:10 - Erro - Summary.UpdateSitesDailySummary: Violation of PRIMARY KEY constraint 'sites_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.sites_daily_summary'. The duplicate key value is (69283, Jun 28 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+28/06/2023 17:40:28 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:28 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:28 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:41 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:41 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:41 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:41 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 17:40:41 - Erro - QueryResult.Add: Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+28/06/2023 18:04:31 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (341022, Jun 26 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+28/06/2023 18:04:31 - Erro - UpdateDailySummary, idClient: 1476, idSite: 51441, idEquipment: 1476, idDataType: 1, response: 164399
+28/06/2023 18:06:28 - QueryResult não processada por data inválida - response: data:08/07/2023 17:13:35
+28/06/2023 18:06:28 - QueryResult não processada por data inválida - response: data:08/07/2023 19:13:39
+28/06/2023 18:06:28 - QueryResult não processada por data inválida - response: data:08/07/2023 21:13:40
+28/06/2023 18:06:28 - QueryResult não processada por data inválida - response: data:03/07/2023 19:49:37
+28/06/2023 18:07:27 - QueryResult não processada por data inválida - response:20216 data:03/03/2025 23:58:16
+28/06/2023 18:07:27 - QueryResult não processada por data inválida - response:6214 data:03/03/2025 23:58:19
+28/06/2023 18:10:51 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 18:11:39 - Serviço parado.
+28/06/2023 18:11:41 - -----------------------------------------------------------
+28/06/2023 18:11:41 - EnttryMessageProcessor versão: 23.6.2
+28/06/2023 18:11:41 - Serviço iniciado
+28/06/2023 18:11:41 - Estatísticas de mensagens recebidas habilitado
+28/06/2023 18:11:41 - MessageProcessor 1 iniciado
+28/06/2023 18:11:41 - MessageProcessor 2 iniciado
+28/06/2023 18:11:41 - MessageProcessor 3 iniciado
+28/06/2023 18:11:41 - MessageProcessor 4 iniciado
+28/06/2023 18:11:41 - Monitoramento de sites offline iniciado
+28/06/2023 18:11:41 - Monitoramento de equipamentos offline iniciado
+28/06/2023 18:11:41 - MessageProcessor 5 iniciado
+28/06/2023 18:11:41 - MessageProcessor 6 iniciado
+28/06/2023 18:11:41 - MessageProcessor 8 iniciado
+28/06/2023 18:11:41 - MessageProcessor 7 iniciado
+28/06/2023 18:15:38 - Serviço parado.
+28/06/2023 18:15:39 - -----------------------------------------------------------
+28/06/2023 18:15:39 - EnttryMessageProcessor versão: 23.6.2
+28/06/2023 18:15:39 - Serviço iniciado
+28/06/2023 18:15:39 - Estatísticas de mensagens recebidas habilitado
+28/06/2023 18:15:39 - MessageProcessor 1 iniciado
+28/06/2023 18:15:39 - MessageProcessor 2 iniciado
+28/06/2023 18:15:40 - MessageProcessor 4 iniciado
+28/06/2023 18:15:40 - MessageProcessor 3 iniciado
+28/06/2023 18:15:40 - MessageProcessor 5 iniciado
+28/06/2023 18:15:40 - MessageProcessor 7 iniciado
+28/06/2023 18:15:40 - MessageProcessor 6 iniciado
+28/06/2023 18:15:40 - MessageProcessor 8 iniciado
+28/06/2023 18:15:40 - Monitoramento de sites offline iniciado
+28/06/2023 18:15:40 - Monitoramento de equipamentos offline iniciado
+28/06/2023 18:17:08 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 18:33:51 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+28/06/2023 19:05:18 - Erro - Summary.UpdateClientsDailySummary: Transaction (Process ID 92) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+28/06/2023 23:28:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 00:12:47 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (450112, Jun 29 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 00:12:47 - Erro - UpdateDailySummary, idClient: 1605, idSite: 68692, idEquipment: 1605, idDataType: 1, response: 24907
+29/06/2023 01:59:50 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 03:46:54 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 04:36:23 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 05:16:21 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 06:03:14 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 07:13:44 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 07:27:48 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 07:43:35 - Erro - Summary.UpdateEquipmentDailySummary: Violation of PRIMARY KEY constraint 'equipments_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.equipments_daily_summary'. The duplicate key value is (457060, Jun 29 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 07:43:35 - Erro - UpdateDailySummary, idClient: 1854, idSite: 69667, idEquipment: 1854, idDataType: 1, response: 53439
+29/06/2023 07:50:44 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 08:15:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 08:25:11 - QueryResult não processada por data inválida - response: data:28/03/2043 09:16:00
+29/06/2023 08:25:14 - QueryResult não processada por data inválida - response: data:13/02/2035 18:52:14
+29/06/2023 08:26:02 - QueryResult não processada por data inválida - response: data:13/01/2043 08:44:05
+29/06/2023 08:27:02 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 08:48:13 - QueryResult não processada por data inválida - response:1565 data:03/04/2036 01:30:20
+29/06/2023 08:48:13 - QueryResult não processada por data inválida - response:1565 data:03/04/2036 01:30:20
+29/06/2023 09:12:44 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 09:14:33 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 106) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+29/06/2023 10:12:29 - Erro - Summary.UpdateClientsDailySummary: Transaction (Process ID 106) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+29/06/2023 10:47:07 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 10:47:08 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 10:47:09 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 10:47:09 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 10:47:10 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 10:47:12 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 10:47:12 - Erro - EquipmentChangeRule.Add: String or binary data would be truncated.
+Changed database context to 'printscout'.
+The statement has been terminated.
+29/06/2023 11:14:12 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 11:15:52 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 13:25:33 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 14:59:07 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 16:18:28 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 16:51:46 - QueryResult não processada por data inválida - response:0 data:29/06/2040 16:47:21
+29/06/2023 22:28:13 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 22:57:40 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 22:59:47 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 23:12:04 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+29/06/2023 23:22:38 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 01:03:56 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 01:27:20 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 01:28:48 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 01:30:34 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 02:00:12 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 02:37:54 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 02:39:23 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 02:51:18 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 03:08:22 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 03:31:22 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 03:33:58 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 04:30:33 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 05:09:37 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 05:23:21 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 05:53:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 06:24:08 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 06:35:33 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 06:55:03 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 07:22:16 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 07:23:52 - Erro - Summary.UpdateSitesDailySummary: Violation of PRIMARY KEY constraint 'sites_daily_summary_pk'. Cannot insert duplicate key in object 'dbo.sites_daily_summary'. The duplicate key value is (69172, Jun 30 2023 12:00AM).
+Changed database context to 'printscout'.
+The statement has been terminated.
+30/06/2023 07:50:34 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 08:01:28 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 08:40:57 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 09:19:35 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 09:31:11 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 09:59:05 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 13:02:04 - Erro - Summary.UpdateSitesDailySummary: Transaction (Process ID 97) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:3 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:5000 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:4150 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:90000 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:100000 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response: 685 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response: 0 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response: 90624 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response: 13930 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:30:17
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:83 data:06/07/2023 13:30:18
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:30:18
+30/06/2023 13:30:28 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:30:18
+30/06/2023 13:31:07 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:3 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:5000 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:4150 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:90000 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:100000 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 685 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 0 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 90624 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 13930 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:83 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:3 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:5000 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:4150 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:90000 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:100000 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 685 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 0 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 90624 data:06/07/2023 13:35:19
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 13930 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:83 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:27 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:3 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:5000 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:4150 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:90000 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:100000 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response: 685 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response: 0 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response: 90624 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response: 13930 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response: 105239 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:83 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:35:29 - QueryResult não processada por data inválida - response:0 data:06/07/2023 13:35:20
+30/06/2023 13:39:56 - QueryResult não processada por data inválida - response: data:14/07/2023 22:56:20
+30/06/2023 13:42:59 - Erro - Summary.UpdateClientsDailySummary: Transaction (Process ID 54) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.
+30/06/2023 13:51:10 - Erro - ServiceProcessor.ProcessMessage: Object reference not set to an instance of an object.

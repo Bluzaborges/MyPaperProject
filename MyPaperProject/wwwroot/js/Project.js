@@ -59,7 +59,7 @@ function LoadProjectsTable() {
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
-                width: 150,
+                width: 200,
                 template: function (row) {
                     return '<a href="/FinalClient/EditFinalClient?id=' + row.id + '" class="text-truncate text-dark-75 d-block font-size-md">' + row.name + '</a>';
                 }
@@ -82,49 +82,53 @@ function LoadProjectsTable() {
                 }
             },
             {
-                field: 'teachersNames',
+                field: 'teachers',
                 title: 'DOCENTE(S)',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.teachersNames[0] + '</span> '
+                    var output = '';
 
-                    for (let i = 1; i < row.teachersNames.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.teachersNames[i] + '</span> '
+                    for (let i = 0; i < row.researchers.length; i++) {
+                        if (row.researchers[i].type == "Teacher")
+                            output += '<span class="label font-weight-bold label-lg label-rounded label-inline label-bold mt-2">' + row.researchers[i].name + '</span> '
+                    }
 
                     return output;
                 }
             },
             {
-                field: 'researchersNames',
+                field: 'researchers',
                 title: 'PESQUISADORE(S)',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.researchersNames[0] + '</span> '
+                    var output = '';
 
-                    for (let i = 1; i < row.researchersNames.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.researchersNames[i] + '</span> '
+                    for (let i = 0; i < row.researchers.length; i++) {
+                        if (row.researchers[i].type != "Teacher")
+                            output += '<span class="label font-weight-bold label-lg label-rounded label-inline label-bold mt-2">' + row.researchers[i].name + '</span> '
+                    }
 
                     return output;
                 }
             },
             {
-                field: 'areasNames',
+                field: 'areas',
                 title: 'ÁREA(S) DO CONHECIMENTO',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.areasNames[0] + '</span> '
+                    var output = '';
 
-                    for (let i = 1; i < row.areasNames.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.areasNames[i] + '</span> '
+                    for (let i = 0; i < row.areas.length; i++)
+                        output += '<span class="label font-weight-bold label-lg label-light-primary label-inline label-bold mt-2">' + row.areas[i].name + '</span>'
 
                     return output;
                 }
@@ -135,12 +139,13 @@ function LoadProjectsTable() {
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
+                width: 125,
                 template: function (row) {
 
                     if (!row.funded)
-                        return '\<a class="text-truncate text-dark-75 d-block font-size-md">Não financiado</a>'
+                        return '<a class="text-truncate text-dark-75 d-block font-size-md">Não financiado</a>'
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.fundingName + '</span> '
+                    var output = '<a class="text-truncate text-dark-75 d-block font-size-md">' + row.funding.name + '</a>'
 
                     return output;
                 }
@@ -151,15 +156,16 @@ function LoadProjectsTable() {
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
+                width: 125,
                 template: function (row) {
 
                     if (!row.ended)
-                        return '\<a class="text-truncate text-dark-75 d-block font-size-md">Em andamento</a>'
+                        return '<span class="label font-weight-bold label-lg label-light-info label-inline label-bold mt-2">Em andamento</span> '
 
                     const splitDate = row.endedDate.split('T')[0].split("-");
                     const newDate = splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0];
 
-                    var output = '\<a class="text-truncate text-dark-75 d-block font-size-md">' + newDate + '</a>'
+                    var output = '<span class="label font-weight-bold label-lg label-rounded label-inline label-bold mt-2">' + newDate + '</span> '
 
                     return output;
                 }

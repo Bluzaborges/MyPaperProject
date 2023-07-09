@@ -1,47 +1,42 @@
 ﻿
+Dropzone.autoDiscover = false;
 jQuery(document).ready(function () {
     ConfigureResults();
     ConfigureDropzone();
 });
 
 function ConfigureDropzone() {
-    // set the dropzone container id
     var id = '#kt_dropzone';
 
-    // set the preview element template
     var previewNode = $(id + " .dropzone-item");
     previewNode.id = "";
     var previewTemplate = previewNode.parent('.dropzone-items').html();
     previewNode.remove();
 
-    myDropzone = new Dropzone(id, { // Make the whole body a dropzone
-        url: "/Result/UploadFile", // Set the url for your upload script location
+    myDropzone = new Dropzone(id, {
+        url: "/Result/UploadFile",
         parallelUploads: 10,
-        maxFilesize: 10240, // Max filesize in MB
+        maxFilesize: 10240,
         maxFiles: 10,
         previewTemplate: previewTemplate,
-        previewsContainer: id + " .dropzone-items", // Define the container to display the previews
-        clickable: id + " .dropzone-select", // Define the element that should be used as click trigger to select files.
+        previewsContainer: id + " .dropzone-items",
+        clickable: id + " .dropzone-select",
         dictMaxFilesExceeded: "O numero máximo de {{maxFiles}} arquivos foi excedido!",
         dictFileTooBig: "O tamanho do arquivo é de {{filesize}}mb, o tamanho máximo que é permitido é de {{maxFilesize}}mb."
     });
 
     myDropzone.on("addedfile", function (file) {
-        // Hookup the start button
         $(document).find(id + ' .dropzone-item').css('display', '');
     });
 
-    // Update the total progress bar
     myDropzone.on("totaluploadprogress", function (progress) {
         $(id + " .progress-bar").css('width', progress + "%");
     });
 
     myDropzone.on("sending", function (file) {
-        // Show the total progress bar when upload starts
         $(id + " .progress-bar").css('opacity', "1");
     });
 
-    // Hide the total progress bar when nothing's uploading anymore
     myDropzone.on("complete", function (progress) {
         var thisProgressBar = id + " .dz-complete";
         setTimeout(function () {
@@ -119,7 +114,13 @@ function ConfigureResults() {
 
 function LoadResults(idResult) {
 
+    const resultsSeparator = document.getElementById("results-separator");
+    const resultsTitle = document.getElementById("results-title");
     const resultsDiv = document.getElementById("results-list");
+
+    resultsSeparator.removeAttribute("hidden");
+    resultsTitle.removeAttribute("hidden");
+    resultsDiv.removeAttribute("hidden");
 
     $.ajax({
         url: "/Result/RenderResultSection",

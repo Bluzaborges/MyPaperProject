@@ -1,11 +1,16 @@
-﻿using MyPaperProject.Global;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using MyPaperProject.Global;
 using MyPaperProject.Models;
+using MyPaperProject.Models.Repositories;
 using Npgsql;
 using System.Reflection;
+using System.Text;
 
 namespace MyPaperProject.Database
 {
-	public class DbResultPostgre
+	public class DbResultPostgre : IResultRepository
 	{
 		public Result GetResultById(int idResult)
 		{
@@ -20,12 +25,12 @@ namespace MyPaperProject.Database
 					cmd.CommandText = @"SELECT name, description, creation_date FROM results " +
 									  @"WHERE id = @Id;";
 
-					cmd.Parameters.AddWithValue("Id", idResult);
+					cmd.Parameters.AddWithValue("@Id", idResult);
 
 					using (cmd.Connection = db.OpenConnection())
 					using (NpgsqlDataReader reader = cmd.ExecuteReader())
 					{
-						while (reader.Read())
+						if (reader.Read())
 						{
 							if (reader["name"] != DBNull.Value)
 								result.Name = reader["name"].ToString();
@@ -46,6 +51,44 @@ namespace MyPaperProject.Database
 			}
 
 			return result;
+		}
+
+		public Attachment GetAttachmentById(int idAttachment)
+		{
+			Attachment attachment = new Attachment();
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT name, content FROM attachments " +
+									  @"WHERE id = @Id;";
+
+					cmd.Parameters.AddWithValue("@Id", idAttachment);
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							if (reader["name"] != DBNull.Value)
+								attachment.Name = reader["name"].ToString();
+
+							if (reader["content"] != DBNull.Value)
+								attachment.Content = (byte[])reader["content"];
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResultPostgre.GetAttachmentById]: " + ex.Message);
+			}
+
+			return attachment;
 		}
 
 		public List<Attachment> GetAttachmentsByIdResult(int idResult)
@@ -89,6 +132,42 @@ namespace MyPaperProject.Database
 
             return attachments;
         }
+
+		public List<int> GetAllResultsByIdProject(int idProject)
+		{
+			List<int> result = new List<int>();
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT id_result " +
+									  @"FROM projects_results " +
+									  @"WHERE id_project = @IdProject;";
+
+					cmd.Parameters.AddWithValue("IdProject", idProject);
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							if (reader["id_result"] != DBNull.Value)
+								result.Add(Convert.ToInt32(reader["id_result"]));
+						}
+					}
+				}
+
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResultPostgre.GetAllResultsByIdProject]: " + ex.Message);
+			}
+
+			return result;
+		}
 
 		public int RegisterResult(Result result)
 		{
@@ -157,42 +236,6 @@ namespace MyPaperProject.Database
 			}
 
 			return response;
-		}
-
-		public List<int> GetAllResultsByIdProject(int idProject)
-		{
-			List<int> result = new List<int>();
-
-			try
-			{
-				DbAccessPostgre db = new DbAccessPostgre();
-
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"SELECT id_result " +
-									  @"FROM projects_results " +
-									  @"WHERE id_project = @IdProject;";
-
-					cmd.Parameters.AddWithValue("IdProject", idProject);
-
-					using (cmd.Connection = db.OpenConnection())
-					using (NpgsqlDataReader reader = cmd.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							if (reader["id_result"] != DBNull.Value)
-								result.Add(Convert.ToInt32(reader["id_result"]));
-						}
-					}
-				}
-
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbArea.GetAllResultsByIdProject]: " + ex.Message);
-			}
-
-			return result;
-		}
+		}	
 	}
 }

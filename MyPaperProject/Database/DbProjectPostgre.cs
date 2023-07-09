@@ -1,67 +1,12 @@
 ﻿using MyPaperProject.Global;
 using MyPaperProject.Models;
+using MyPaperProject.Models.Repositories;
 using Npgsql;
 
 namespace MyPaperProject.Database
 {
-	public class DbProjectPostgre
+	public class DbProjectPostgre : IProjectRepository
 	{
-        public List<Project> GetAllProjects()
-        {
-            List<Project> result = new List<Project>();
-
-            try
-            {
-                DbAccessPostgre db = new DbAccessPostgre();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
-                {
-                    cmd.CommandText = @"SELECT id, id_funding, name, funded, ended, ended_date, creation_date FROM projects " +
-                                      @"WHERE deleted = false " +
-                                      @"ORDER BY name;";
-
-                    using (cmd.Connection = db.OpenConnection())
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Project project = new Project();
-
-                            if (reader["id"] != DBNull.Value)
-                                project.Id = Convert.ToInt32(reader["id"]);
-
-                            if (reader["id_funding"] != DBNull.Value)
-                                project.IdFunding = Convert.ToInt32(reader["id_funding"]);
-
-                            if (reader["name"] != DBNull.Value)
-                                project.Name = reader["name"].ToString();
-
-                            if (reader["funded"] != DBNull.Value)
-                                project.Funded = Convert.ToBoolean(reader["funded"]);
-
-                            if (reader["ended"] != DBNull.Value)
-                                project.Ended = Convert.ToBoolean(reader["ended"]);
-
-                            if (reader["ended_date"] != DBNull.Value)
-                                project.EndedDate = Convert.ToDateTime(reader["ended_date"]);
-
-                            if (reader["creation_date"] != DBNull.Value)
-                                project.CreationDate = Convert.ToDateTime(reader["creation_date"]);
-
-                            result.Add(project);
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Log.Add(LogType.error, "[DbProjectPostgre.GetAllProjects]: " + ex.Message);
-            }
-
-            return result;
-        }
-
 		public Project GetProjectById(int id)
 		{
 			Project result = new Project();
@@ -83,7 +28,7 @@ namespace MyPaperProject.Database
 						if (reader.Read())
 						{
 							if (reader["id_funding"] != DBNull.Value)
-								result.IdFunding = Convert.ToInt32(reader["id_funding"]);
+								result.Funding.Id = Convert.ToInt32(reader["id_funding"]);
 
 							if (reader["name"] != DBNull.Value)
 								result.Name = reader["name"].ToString();
@@ -111,38 +56,62 @@ namespace MyPaperProject.Database
 			return result;
 		}
 
-		public bool ProjectExists(string name)
-		{
-			bool result = false;
-			int count = 0;
+		public List<Project> GetAllProjects()
+        {
+            List<Project> result = new List<Project>();
 
-			try
-			{
-				DbAccessPostgre db = new DbAccessPostgre();
+            try
+            {
+                DbAccessPostgre db = new DbAccessPostgre();
 
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"SELECT COUNT(*) FROM projects " +
-									  @"WHERE name = @Name;";
+                using (NpgsqlCommand cmd = new NpgsqlCommand())
+                {
+                    cmd.CommandText = @"SELECT p.id, p.name, p.funded, f.name AS funding_name, p.ended, p.ended_date, p.creation_date " +
+									  @"FROM projects AS p, fundings AS f " +
+									  @"WHERE f.id = p.id_funding AND deleted = false " +
+                                      @"ORDER BY name;";
 
-					cmd.Parameters.AddWithValue("@Name", name);
+                    using (cmd.Connection = db.OpenConnection())
+                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Project project = new Project();
 
-					using (cmd.Connection = db.OpenConnection())
-					{
-						count = Convert.ToInt32(cmd.ExecuteScalar());
+                            if (reader["id"] != DBNull.Value)
+                                project.Id = Convert.ToInt32(reader["id"]);
 
-						if (count > 0)
-							result = true;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbProjectPostgre.ProjectExists]: " + ex.Message);
-			}
+							if (reader["name"] != DBNull.Value)
+                                project.Name = reader["name"].ToString();
 
-			return result;
-		}
+                            if (reader["funded"] != DBNull.Value)
+                                project.Funded = Convert.ToBoolean(reader["funded"]);
+
+							if (reader["funding_name"] != DBNull.Value)
+								project.Funding.Name = reader["funding_name"].ToString();
+
+							if (reader["ended"] != DBNull.Value)
+                                project.Ended = Convert.ToBoolean(reader["ended"]);
+
+                            if (reader["ended_date"] != DBNull.Value)
+                                project.EndedDate = Convert.ToDateTime(reader["ended_date"]);
+
+                            if (reader["creation_date"] != DBNull.Value)
+                                project.CreationDate = Convert.ToDateTime(reader["creation_date"]);
+
+                            result.Add(project);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Log.Add(LogType.error, "[DbProjectPostgre.GetAllProjects]: " + ex.Message);
+            }
+
+            return result;
+        }
 
 		public int RegisterProject(Project project)
 		{
@@ -158,7 +127,7 @@ namespace MyPaperProject.Database
 									  @"VALUES (@Name, @IdFunding, @Description, @Funded, @Ended, @EndedDate, @CreationDate) RETURNING id;";
 
 					cmd.Parameters.AddWithValue("@Name", project.Name);
-					cmd.Parameters.AddWithValue("@IdFunding", project.IdFunding);
+					cmd.Parameters.AddWithValue("@IdFunding", project.Funding.Id);
 					cmd.Parameters.AddWithValue("@Description", project.Description);
 					cmd.Parameters.AddWithValue("@Funded", project.Funded);
 					cmd.Parameters.AddWithValue("@Ended", project.Ended);
@@ -296,7 +265,7 @@ namespace MyPaperProject.Database
 
 					cmd.Parameters.AddWithValue("@Id", project.Id);
 					cmd.Parameters.AddWithValue("@Name", project.Name);
-					cmd.Parameters.AddWithValue("@IdFunding", project.IdFunding);
+					cmd.Parameters.AddWithValue("@IdFunding", project.Funding.Id);
 					cmd.Parameters.AddWithValue("@Description", project.Description);
 					cmd.Parameters.AddWithValue("@Funded", project.Funded);
 					cmd.Parameters.AddWithValue("@Ended", project.Ended);
@@ -313,6 +282,39 @@ namespace MyPaperProject.Database
 			catch (Exception ex)
 			{
 				Log.Add(LogType.error, "[DbProjectPostgre.UpdateProject]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool ProjectExists(string name)
+		{
+			bool result = false;
+			int count = 0;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT COUNT(*) FROM projects " +
+									  @"WHERE name = @Name;";
+
+					cmd.Parameters.AddWithValue("@Name", name);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						count = Convert.ToInt32(cmd.ExecuteScalar());
+
+						if (count > 0)
+							result = true;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbProjectPostgre.ProjectExists]: " + ex.Message);
 			}
 
 			return result;

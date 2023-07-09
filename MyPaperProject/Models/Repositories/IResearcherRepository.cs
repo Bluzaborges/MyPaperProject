@@ -2,11 +2,17 @@
 {
 	public interface IResearcherRepository
 	{
-		bool ResearcherExists(string name, string cpf);
+		Researcher GetResearcherById(int id);
+		List<Researcher> GetAllResearchers();
+		List<Researcher> GetAllResearchersAreas();
+		List<Researcher> GetAllResearchersByIdProject(int idProject);
+		int GetResearcherProjectsCount(int idResearcher);
 		int RegisterResearcher(Researcher researcher);
 		bool RegisterResearcherAreas(int idResearcher, int idArea);
 		bool RegisterResearcherSubareas(int idResearcher, int idSubarea);
-		public List<Researcher> GetAllResearchers();
-		public List<Researcher> GetAllResearchersAreas();
+		bool UpdateResearcher(Researcher researcher);
+		bool DeleteResearcherById(int id);
+		bool ResearcherExists(string name, string cpf);
+		bool ResearcherHaveProject(int idResearcher);
 	}
 }

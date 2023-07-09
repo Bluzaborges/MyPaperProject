@@ -7,7 +7,9 @@ namespace MyPaperProject.Controllers
 {
     public class ResearcherController : Controller
     {
-        public IActionResult Index()
+		#region Views
+
+		public IActionResult Index()
         {
             return View();
         }
@@ -15,22 +17,39 @@ namespace MyPaperProject.Controllers
         public IActionResult Register()
         {
             DbAreaPostgre dbArea= new DbAreaPostgre();
-
             ViewBag.Areas = dbArea.GetAllAreas();
 
             Researcher researcher = new Researcher();
-
             researcher.Id = 0;
 
             return View("Register", researcher);
         }
 
-        [HttpPost]
+		public IActionResult Edit(int id)
+		{
+			DbAreaPostgre dbArea = new DbAreaPostgre();
+			DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
+			DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+
+			Researcher researcher = dbResearcher.GetResearcherById(id);
+			researcher.Id = id;
+
+			researcher.Areas = dbArea.GetAllAreasByIdResearcher(id);
+			researcher.Subareas = dbSubarea.GetAllSubareasByIdResearcher(id);
+
+			return View("Register", researcher);
+		}
+
+		#endregion
+
+		#region Public Methods
+
+		[HttpPost]
         public JsonResult RegisterResearcher([FromBody] Researcher researcher)
         {
             DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
-            bool result = false;
-            int idResearcher = 0;
+			int idResearcher = 0;
+			bool result = false;
 
 			try
             {
@@ -46,7 +65,16 @@ namespace MyPaperProject.Controllers
 				if (researcher.Cpf.Length != 11)
 					return Json(new { success = result, message = "CPF inválido." });
 
-                if (dbResearcher.ResearcherExists(researcher.Name, researcher.Cpf) && researcher.Id == 0)
+				if (string.IsNullOrEmpty(researcher.Type))
+					return Json(new { success = result, message = "Tipo do pesquisador não preenchido." });
+
+				if (researcher.Areas.Count <= 0)
+					return Json(new { success = result, message = "Áreas do pesquisador não selecionadas." });
+
+				if (researcher.Subareas.Count <= 0)
+					return Json(new { success = result, message = "Subáreas do pesquisador não selecionadas." });
+
+				if (dbResearcher.ResearcherExists(researcher.Name, researcher.Cpf) && researcher.Id == 0)
 					return Json(new { success = result, message = "Pesquisador já cadastrado." });
 
                 if (researcher.Id == 0)
@@ -55,21 +83,19 @@ namespace MyPaperProject.Controllers
 
 					if (idResearcher != 0)
 					{
-						for (int i = 0; i < researcher.idAreas.Count; i++)
-							dbResearcher.RegisterResearcherAreas(idResearcher, researcher.idAreas[i]);
+						for (int i = 0; i < researcher.Areas.Count; i++)
+							dbResearcher.RegisterResearcherAreas(idResearcher, researcher.Areas[i].Id);
 
-						for (int i = 0; i < researcher.idSubareas.Count; i++)
-							dbResearcher.RegisterResearcherSubareas(idResearcher, researcher.idSubareas[i]);
+						for (int i = 0; i < researcher.Subareas.Count; i++)
+							dbResearcher.RegisterResearcherSubareas(idResearcher, researcher.Subareas[i].Id);
 
 						result = true;
-
 					}
 					else
 						return Json(new { success = result, message = "Não foi possível inserir o pesquisador." });
+
 				} else
-                {
                     result = dbResearcher.UpdateResearcher(researcher);
-                }
 
 			} catch (Exception ex)
             {
@@ -79,38 +105,28 @@ namespace MyPaperProject.Controllers
 			return Json(new { success = result, message = idResearcher });
         }
 
-        public IActionResult Edit(int id)
-        {
-			DbAreaPostgre dbArea = new DbAreaPostgre();
-			DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
-            DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
-
-			ViewBag.Areas = dbArea.GetAllAreas();
-            ViewBag.Subareas = dbSubarea.GetAllSubareas();
-
-            Researcher researcher = dbResearcher.GetResearcherById(id);
-            researcher.Id = id;
-
-            researcher.idAreas = dbArea.GetAllAreasByIdResearcher(id).Select(a => a.Id).ToList();
-            researcher.idSubareas = dbSubarea.GetAllSubareasByIdResearcher(id).Select(s => s.Id).ToList();
-
-			return View("Register", researcher);
-		}
-
 		[HttpPost]
 		public JsonResult GetAllResearchers()
 		{
 			DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
-            DbAreaPostgre dbArea = new DbAreaPostgre();
-            DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
+			DbAreaPostgre dbArea = new DbAreaPostgre();
+			DbSubareaPostgre dbSubarea = new DbSubareaPostgre();
+			List<Researcher> researchers = new List<Researcher>();
 
-			List<Researcher> researchers = dbResearcher.GetAllResearchers();
+			try
+			{
+				researchers = dbResearcher.GetAllResearchers();
 
-            foreach (Researcher researcher in researchers)
-            {
-                researcher.nameAreas = dbArea.GetAllAreasByIdResearcher(researcher.Id).Select(a => a.Name).ToList();
-                researcher.nameSubareas = dbSubarea.GetAllSubareasByIdResearcher(researcher.Id).Select(s => s.Name).ToList();
-            }
+				foreach (Researcher researcher in researchers)
+				{
+					researcher.Areas = dbArea.GetAllAreasByIdResearcher(researcher.Id);
+					researcher.Subareas = dbSubarea.GetAllSubareasByIdResearcher(researcher.Id);
+					researcher.ProjectsCount = dbResearcher.GetResearcherProjectsCount(researcher.Id);
+				}
+			} catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[ResearcherController.GetAllResearchers]: " + ex.Message);
+			}
 
 			return Json(researchers);
 		}
@@ -119,8 +135,16 @@ namespace MyPaperProject.Controllers
         public JsonResult GetAllResearchersAreas()
         {
             DbResearcherPostgre dbResearcher = new DbResearcherPostgre();
+			List<Researcher> researchers = new List<Researcher>();
 
-            List<Researcher> researchers = dbResearcher.GetAllResearchersAreas();
+			try
+			{
+				researchers = dbResearcher.GetAllResearchersAreas();
+
+			} catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[ResearcherController.GetAllResearchersAreas]: " + ex.Message);
+			}
 
             return Json(researchers);
         }
@@ -148,5 +172,7 @@ namespace MyPaperProject.Controllers
 
 			return Json(new { success = result, message = "" });
 		}
+
+		#endregion
 	}
 }

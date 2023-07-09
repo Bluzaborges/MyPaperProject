@@ -79,12 +79,9 @@
 					}
 					else
 					{
-						foreach (Area area in ViewBag.Areas)
+						foreach (Area area in Model.Areas)
 						{
-							if (Model.idAreas.Contains(area.Id))
-							{
-								<option value="@area.Id" selected>@area.Name</option>
-							}
+							<option value="@area.Id" selected>@area.Name</option>
 						}
 					}
 				</select>
@@ -96,12 +93,9 @@
 				<select class="form-control select2" id="select-subarea" name="param" multiple="multiple" @(Model.Id != 0 ? "disabled" : "")>
 					@if (Model.Id != 0)
 					{
-						foreach (Subarea subarea in ViewBag.Subareas)
+						foreach (Subarea subarea in Model.Subareas)
 						{
-							if (Model.idSubareas.Contains(subarea.Id))
-							{
-								<option value="@subarea.Id" selected>@subarea.Name</option>
-							}
+							<option value="@subarea.Id" selected>@subarea.Name</option>
 						}
 					}
 				</select>

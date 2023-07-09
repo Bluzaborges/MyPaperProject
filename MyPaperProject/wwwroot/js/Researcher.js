@@ -58,7 +58,7 @@ function LoadResearchersTable() {
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
-                width: 150,
+                width: 200,
                 template: function (row) {
                     return '<a href="/FinalClient/EditFinalClient?id=' + row.id + '" class="text-truncate text-dark-75 d-block font-size-md">' + row.name + '</a>';
                 }
@@ -69,7 +69,7 @@ function LoadResearchersTable() {
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
-                width: 125,
+                width: 150,
                 template: function (row) {
 
                     row.cpf = row.cpf.replace(/\D/g, '');
@@ -86,7 +86,7 @@ function LoadResearchersTable() {
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
-                width: 125,
+                width: 150,
                 template: function (row) {
 
                     if (row.type == "Teacher") {
@@ -103,35 +103,45 @@ function LoadResearchersTable() {
                 }
             },
             {
-                field: 'nameAreas',
+                field: 'areas',
                 title: 'ÁREA(S) DO CONHECIMENTO',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameAreas[0] + '</span> '
+                    var output = ''
 
-                    for (let i = 1; i < row.nameAreas.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameAreas[i] + '</span> '
+                    for (let i = 0; i < row.areas.length; i++)
+                        output += '<span class="label font-weight-bold label-lg label-light-primary label-inline label-bold mt-2">' + row.areas[i].name + '</span> '
 
                     return output;
                 }
             },
             {
-                field: 'nameSubareas',
+                field: 'subareas',
                 title: 'SUBÁREA(S) DO CONHECIMENTO',
                 selector: false,
                 overflow: 'visible',
                 autoHide: false,
                 template: function (row) {
 
-                    var output = '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameSubareas[0] + '</span> '
+                    var output = ''
 
-                    for (let i = 1; i < row.nameSubareas.length; i++)
-                        output += '<span class="label label-inline label-light-primary font-weight-bold mt-2">' + row.nameSubareas[i] + '</span> '
+                    for (let i = 0; i < row.subareas.length; i++)
+                        output += '<span class="label font-weight-bold label-lg label-light-primary label-inline label-bold mt-2">' + row.subareas[i].name + '</span> '
 
                     return output;
+                }
+            },
+            {
+                field: 'projectsCount',
+                title: 'Nº DE PROJETOS',
+                selector: false,
+                overflow: 'visible',
+                autoHide: false,
+                template: function (row) {
+                    return '<a class="text-truncate text-dark-75 d-block font-size-md">' + row.projectsCount + '</a>';
                 }
             },
             {

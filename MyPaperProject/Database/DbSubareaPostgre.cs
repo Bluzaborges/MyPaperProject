@@ -44,7 +44,7 @@ namespace MyPaperProject.Database
 			}
 			catch (Exception ex)
 			{
-				Log.Add(LogType.error, "[DbSubarea.GetAllSubareas]: " + ex.Message);
+				Log.Add(LogType.error, "[DbSubareaPostgre.GetAllSubareas]: " + ex.Message);
 			}
 
 			return result;
@@ -88,7 +88,7 @@ namespace MyPaperProject.Database
             }
             catch (Exception ex)
             {
-                Log.Add(LogType.error, "[DbArea.GetAllSubareasNamesByIdResearcher]: " + ex.Message);
+                Log.Add(LogType.error, "[DbSubareaPostgre.GetAllSubareasNamesByIdResearcher]: " + ex.Message);
             }
 
             return result;

@@ -43,14 +43,12 @@
 						{
 							<option value="@area.Id">@area.Name</option>
 						}
-					} else
+					} 
+					else
 					{
-						foreach (Area area in ViewBag.Areas)
+						foreach (Area area in Model.Areas)
 						{
-							if (Model.IdAreas.Contains(area.Id))
-							{
-								<option value="@area.Id" selected>@area.Name</option>
-							}
+							<option value="@area.Id" selected>@area.Name</option>
 						}
 					}
 				</select>
@@ -62,9 +60,9 @@
 				<select class="form-control select2" id="select-teacher" multiple="multiple" @(Model.Id != 0 ? "disabled" : "")>
 					@if (Model.Id != 0)
 					{
-						foreach (Researcher researcher in ViewBag.Researchers)
+						foreach (Researcher researcher in Model.Researchers)
 						{
-							if (Model.IdTeachers.Contains(researcher.Id))
+							if (researcher.Type == ResearcherType.Teacher.ToString())
 							{
 								<option value="@researcher.Id" selected>@researcher.Name</option>
 							}
@@ -79,9 +77,9 @@
 				<select class="form-control select2" id="select-researcher" multiple="multiple" @(Model.Id != 0 ? "disabled" : "")>
 					@if (Model.Id != 0)
 					{
-						foreach (Researcher researcher in ViewBag.Researchers)
+						foreach (Researcher researcher in Model.Researchers)
 						{
-							if (Model.IdResearchers.Contains(researcher.Id))
+							if (researcher.Type != ResearcherType.Teacher.ToString())
 							{
 								<option value="@researcher.Id" selected>@researcher.Name</option>
 							}
@@ -105,7 +103,7 @@
 				<select class="form-control select2" id="select-funding" @(Model.Id != 0 && (Model.Funded && !Model.Ended) ? "" : "disabled") >
 					@foreach (Funding funding in ViewBag.Fundings)
 					{
-						if (Model.Id != 0 && (Model.Funded && Model.IdFunding == funding.Id))
+						if (Model.Id != 0 && (Model.Funded && Model.Funding.Id == funding.Id))
 						{
 							<option value="@funding.Id" selected>@funding.Name</option>
 						} else
@@ -144,11 +142,11 @@
 			</div>
 		</div>
 
-		<div class="separator separator-dashed my-10"></div>
+		<div id="results-separator" class="separator separator-dashed my-10" hidden></div>
 
-		<h3 class=" text-dark font-weight-bold col-md-2 col-sm-12 text-sm-left text-md-right">Resultados:</h3>
+		<h3 id="results-title" class=" text-dark font-weight-bold col-md-2 col-sm-12 text-sm-left text-md-right" hidden>Resultados:</h3>
 
-		<div id="results-list">
+		<div id="results-list" hidden>
 
 		</div>
 	</div>

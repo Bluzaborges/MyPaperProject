@@ -2,7 +2,6 @@
 using MyPaperProject.Models;
 using MyPaperProject.Models.Repositories;
 using Npgsql;
-using System.Xml.Linq;
 
 namespace MyPaperProject.Database
 {
@@ -43,142 +42,7 @@ namespace MyPaperProject.Database
 			}
 			catch (Exception ex)
 			{
-				Log.Add(LogType.error, "[DbResearcher.GetResearcherById]: " + ex.Message);
-			}
-
-			return result;
-		}
-
-		public bool ResearcherExists(string name, string cpf)
-		{
-			bool result = false;
-			int count = 0;
-
-			try
-			{
-				DbAccessPostgre db = new DbAccessPostgre();
-
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"SELECT COUNT(*) FROM researchers " +
-									  @"WHERE name = @Name OR cpf = @Cpf;";
-
-					cmd.Parameters.AddWithValue("@Name", name);
-					cmd.Parameters.AddWithValue("@Cpf", cpf);	
-
-					using (cmd.Connection = db.OpenConnection())
-					{
-						count = Convert.ToInt32(cmd.ExecuteScalar());
-
-						if (count > 0)
-							result = true;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbResearcher.ResearcherExists]: " + ex.Message);
-			}
-
-			return result;
-		}
-
-		public int RegisterResearcher(Researcher researcher)
-		{
-			int result = 0;
-
-			try
-			{
-				DbAccessPostgre db = new DbAccessPostgre();
-
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"INSERT INTO researchers (name, cpf, type, creation_date) " +
-									  @"VALUES (@Name, @Cpf, @Type, @CreationDate) RETURNING id;";
-
-					cmd.Parameters.AddWithValue("@Name", researcher.Name);
-					cmd.Parameters.AddWithValue("@Cpf", researcher.Cpf);
-					cmd.Parameters.AddWithValue("@Type", researcher.Type);
-					cmd.Parameters.AddWithValue("@CreationDate", DateTime.Now);
-
-					using (cmd.Connection = db.OpenConnection())
-					using (NpgsqlDataReader reader = cmd.ExecuteReader())
-					{
-						if (reader.Read())
-						{
-							if (reader["id"] != DBNull.Value)
-								result = Convert.ToInt32(reader["id"]);
-						}
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbResearcher.RegisterResearcher]: " + ex.Message);
-			}
-
-			return result;
-		}
-
-		public bool RegisterResearcherAreas(int idResearcher, int idArea)
-		{
-			bool result = false;
-
-			try
-			{
-				DbAccessPostgre db = new DbAccessPostgre();
-
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"INSERT INTO researchers_areas (id_researcher, id_area) " +
-									  @"VALUES (@IdResearcher, @IdArea);";
-
-					cmd.Parameters.AddWithValue("@IdResearcher", idResearcher);
-					cmd.Parameters.AddWithValue("@IdArea", idArea);
-
-					using (cmd.Connection = db.OpenConnection())
-					{
-						cmd.ExecuteNonQuery();
-					}
-				}
-
-				result = true;
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbResearcher.RegisterResearcherAreas]: " + ex.Message);
-			}
-
-			return result;
-		}
-
-		public bool RegisterResearcherSubareas(int idResearcher, int idSubarea)
-		{
-			bool result = false;
-
-			try
-			{
-				DbAccessPostgre db = new DbAccessPostgre();
-
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"INSERT INTO researchers_subareas (id_researcher, id_subarea) " +
-									  @"VALUES (@IdResearcher, @IdSubarea);";
-
-					cmd.Parameters.AddWithValue("@IdResearcher", idResearcher);
-					cmd.Parameters.AddWithValue("@IdSubarea", idSubarea);
-
-					using (cmd.Connection = db.OpenConnection())
-					{
-						cmd.ExecuteNonQuery();
-					}
-				}
-
-				result = true;
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbResearcher.RegisterResearcherSubareas]: " + ex.Message);
+				Log.Add(LogType.error, "[DbResearcherPostgre.GetResearcherById]: " + ex.Message);
 			}
 
 			return result;
@@ -225,7 +89,7 @@ namespace MyPaperProject.Database
 			}
 			catch (Exception ex)
 			{
-				Log.Add(LogType.error, "[DbResearcher.GetAllResearchers]: " + ex.Message);
+				Log.Add(LogType.error, "[DbResearcherPostgre.GetAllResearchers]: " + ex.Message);
 			}
 
 			return result;
@@ -273,58 +137,188 @@ namespace MyPaperProject.Database
 			}
 			catch (Exception ex)
 			{
-				Log.Add(LogType.error, "[DbResearcher.GetAllResearchersAreas]: " + ex.Message);
+				Log.Add(LogType.error, "[DbResearcherPostgre.GetAllResearchersAreas]: " + ex.Message);
 			}
 
 			return result;
 		}
 
-        public List<Researcher> GetAllResearchersByIdProject(int idProject)
-        {
-            List<Researcher> result = new List<Researcher>();
+		public List<Researcher> GetAllResearchersByIdProject(int idProject)
+		{
+			List<Researcher> result = new List<Researcher>();
 
-            try
-            {
-                DbAccessPostgre db = new DbAccessPostgre();
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
 
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
-                {
-                    cmd.CommandText = @"SELECT r.id, r.name, r.type " +
-                                      @"FROM projects_researchers AS pr, researchers AS r " +
-                                      @"WHERE pr.id_project = @IdProject AND pr.id_researcher = r.id " +
-                                      @"ORDER BY r.name;";
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT r.id, r.name, r.type " +
+									  @"FROM projects_researchers AS pr, researchers AS r " +
+									  @"WHERE pr.id_project = @IdProject AND pr.id_researcher = r.id " +
+									  @"ORDER BY r.name;";
 
-                    cmd.Parameters.AddWithValue("IdProject", idProject);
+					cmd.Parameters.AddWithValue("IdProject", idProject);
 
-                    using (cmd.Connection = db.OpenConnection())
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						while (reader.Read())
+						{
 							Researcher researcher = new Researcher();
 
 							if (reader["id"] != DBNull.Value)
 								researcher.Id = Convert.ToInt32(reader["id"]);
 
 							if (reader["name"] != DBNull.Value)
-                                researcher.Name = reader["name"].ToString();
+								researcher.Name = reader["name"].ToString();
 
-                            if (reader["type"] != DBNull.Value)
-                                researcher.Type = reader["type"].ToString();
+							if (reader["type"] != DBNull.Value)
+								researcher.Type = reader["type"].ToString();
 
 							result.Add(researcher);
-                        }
-                    }
-                }
+						}
+					}
+				}
 
-            }
-            catch (Exception ex)
-            {
-                Log.Add(LogType.error, "[DbResearcher.GetAllResearchersByIdProject]: " + ex.Message);
-            }
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.GetAllResearchersByIdProject]: " + ex.Message);
+			}
 
-            return result;
-        }
+			return result;
+		}
+
+		public int GetResearcherProjectsCount(int idResearcher)
+		{
+			int result = 0;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT COUNT(*) FROM projects_researchers " +
+									  @"WHERE id_researcher = @Id;";
+
+					cmd.Parameters.AddWithValue("@Id", idResearcher);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						result = Convert.ToInt32(cmd.ExecuteScalar());
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.GetResearcherProjectsCount]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public int RegisterResearcher(Researcher researcher)
+		{
+			int result = 0;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"INSERT INTO researchers (name, cpf, type, creation_date) " +
+									  @"VALUES (@Name, @Cpf, @Type, @CreationDate) RETURNING id;";
+
+					cmd.Parameters.AddWithValue("@Name", researcher.Name);
+					cmd.Parameters.AddWithValue("@Cpf", researcher.Cpf);
+					cmd.Parameters.AddWithValue("@Type", researcher.Type);
+					cmd.Parameters.AddWithValue("@CreationDate", DateTime.Now);
+
+					using (cmd.Connection = db.OpenConnection())
+					using (NpgsqlDataReader reader = cmd.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							if (reader["id"] != DBNull.Value)
+								result = Convert.ToInt32(reader["id"]);
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.RegisterResearcher]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool RegisterResearcherAreas(int idResearcher, int idArea)
+		{
+			bool result = false;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"INSERT INTO researchers_areas (id_researcher, id_area) " +
+									  @"VALUES (@IdResearcher, @IdArea);";
+
+					cmd.Parameters.AddWithValue("@IdResearcher", idResearcher);
+					cmd.Parameters.AddWithValue("@IdArea", idArea);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.RegisterResearcherAreas]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool RegisterResearcherSubareas(int idResearcher, int idSubarea)
+		{
+			bool result = false;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"INSERT INTO researchers_subareas (id_researcher, id_subarea) " +
+									  @"VALUES (@IdResearcher, @IdSubarea);";
+
+					cmd.Parameters.AddWithValue("@IdResearcher", idResearcher);
+					cmd.Parameters.AddWithValue("@IdSubarea", idSubarea);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.RegisterResearcherSubareas]: " + ex.Message);
+			}
+
+			return result;
+		}
 
 		public bool UpdateResearcher(Researcher researcher)
 		{
@@ -353,7 +347,73 @@ namespace MyPaperProject.Database
 			}
 			catch (Exception ex)
 			{
-				Log.Add(LogType.error, "[DbResearcher.UpdateResearcher]: " + ex.Message);
+				Log.Add(LogType.error, "[DbResearcherPostgre.UpdateResearcher]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool DeleteResearcherById(int id)
+		{
+			bool result = false;
+			DbAccessPostgre db = new DbAccessPostgre();
+
+			try
+			{
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"UPDATE researchers " +
+									  @"SET deleted = true, deleted_date = @DeletedDate " +
+									  @"WHERE id = @Id;";
+
+					cmd.Parameters.AddWithValue("@Id", id);
+					cmd.Parameters.AddWithValue("@DeletedDate", DateTime.Now);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						cmd.ExecuteNonQuery();
+					}
+				}
+
+				result = true;
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.DeleteResearcherById]: " + ex.Message);
+			}
+
+			return result;
+		}
+
+		public bool ResearcherExists(string name, string cpf)
+		{
+			bool result = false;
+			int count = 0;
+
+			try
+			{
+				DbAccessPostgre db = new DbAccessPostgre();
+
+				using (NpgsqlCommand cmd = new NpgsqlCommand())
+				{
+					cmd.CommandText = @"SELECT COUNT(*) FROM researchers " +
+									  @"WHERE name = @Name OR cpf = @Cpf;";
+
+					cmd.Parameters.AddWithValue("@Name", name);
+					cmd.Parameters.AddWithValue("@Cpf", cpf);
+
+					using (cmd.Connection = db.OpenConnection())
+					{
+						count = Convert.ToInt32(cmd.ExecuteScalar());
+
+						if (count > 0)
+							result = true;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Log.Add(LogType.error, "[DbResearcherPostgre.ResearcherExists]: " + ex.Message);
 			}
 
 			return result;
@@ -386,39 +446,7 @@ namespace MyPaperProject.Database
 			}
 			catch (Exception ex)
 			{
-				Log.Add(LogType.error, "[DbResearcher.ResearcherHaveProject]: " + ex.Message);
-			}
-
-			return result;
-		}
-
-		public bool DeleteResearcherById(int id)
-		{
-			bool result = false;
-			DbAccessPostgre db = new DbAccessPostgre();
-
-			try
-			{
-				using (NpgsqlCommand cmd = new NpgsqlCommand())
-				{
-					cmd.CommandText = @"UPDATE researchers " +
-									  @"SET deleted = true, deleted_date = @DeletedDate " +
-									  @"WHERE id = @Id;";
-
-					cmd.Parameters.AddWithValue("@Id", id);
-					cmd.Parameters.AddWithValue("@DeletedDate", DateTime.Now);
-
-					using (cmd.Connection = db.OpenConnection())
-					{
-						cmd.ExecuteNonQuery();
-					}
-				}
-
-				result = true;
-			}
-			catch (Exception ex)
-			{
-				Log.Add(LogType.error, "[DbResearcher.DeleteResearcherById]: " + ex.Message);
+				Log.Add(LogType.error, "[DbResearcherPostgre.ResearcherHaveProject]: " + ex.Message);
 			}
 
 			return result;

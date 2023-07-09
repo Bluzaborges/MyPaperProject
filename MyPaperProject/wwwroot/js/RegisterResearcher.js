@@ -104,13 +104,31 @@ $("#select-area").change(function () {
 
 $("#btnSubmit").click(function () {
 
+    var selectedAreas = $("#select-area").val();
+    var areasList = [];
+
+    for (let i = 0; i < selectedAreas.length; i++) {
+        let area = {};
+        area.id = selectedAreas[i];
+        areasList.push(area);
+    }
+
+    var selectedSubareas = $("#select-subarea").val();
+    var subareasList = [];
+
+    for (let i = 0; i < selectedSubareas.length; i++) {
+        let subarea = {};
+        subarea.id = selectedSubareas[i];
+        subareasList.push(subarea);
+    }
+
     var formData = {
         id: $("#researcher-id").val(),
         name: $("#researcher-name").val(),
         cpf: $("#researcher-document").val(),
         type: $("#select-type").val(),
-        idAreas: $("#select-area").val(),
-        idSubareas: $("#select-subarea").val(),
+        areas: areasList,
+        subareas: subareasList
     };
     
     $.ajax({

@@ -152,9 +152,37 @@ function addStudents(selectedAreaValues) {
 
 $("#btnSubmit").click(function () {
 
-    const idResults = document.querySelectorAll(".accordion");
+    const selectedAreas = $("#select-area").val();
+    var areasList = [];
 
-    const idResultList = [];
+    for (let i = 0; i < selectedAreas.length; i++) {
+        let area = {};
+        area.id = selectedAreas[i];
+        areasList.push(area);
+    }
+
+    const selectedResearchers = $("#select-researcher").val();
+    const selectedTeachers = $("#select-teacher").val();
+    var researcherList = [];
+
+    for (let i = 0; i < selectedResearchers.length; i++) {
+        let researcher = {};
+        researcher.id = selectedResearchers[i];
+        researcherList.push(researcher);
+    }
+
+    for (let i = 0; i < selectedTeachers.length; i++) {
+        let researcher = {};
+        researcher.id = selectedTeachers[i];
+        researcherList.push(researcher);
+    }
+
+    var selectedFunding = {
+        id: $("#funded").prop('checked') == true ? $("#select-funding").val() : 0
+    };
+
+    const idResults = document.querySelectorAll(".accordion");
+    var idResultList = [];
 
     for (let i = 0; i < idResults.length; i++)
         idResultList.push(idResults[i].id);
@@ -162,10 +190,10 @@ $("#btnSubmit").click(function () {
     var formData = {
         id: $("#project-id").val(),
         name: $("#project-name").val(),
-        idAreas: $("#select-area").val(),
-        idTeachers: $("#select-teacher").val(),
-        idResearchers: $("#select-researcher").val(),
+        areas: areasList,
+        researchers: researcherList,
         funded: $("#funded").prop('checked'),
+        funding: selectedFunding,
         idFunding: $("#funded").prop('checked') == true ? $("#select-funding").val() : 0,
         ended: $("#ended").prop('checked'),
         endedDate: $("#ended").prop('checked') == false || $("#ended-date").val() == "" ? "0001-01-01" : $("#ended-date").val(),

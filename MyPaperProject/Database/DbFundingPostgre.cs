@@ -1,12 +1,13 @@
 ﻿using MyPaperProject.Global;
 using MyPaperProject.Models;
+using MyPaperProject.Models.Repositories;
 using Npgsql;
 
 namespace MyPaperProject.Database
 {
-	public class DbFundingPostgre
+	public class DbFundingPostgre : IFundingRepository
 	{
-		public List<Funding> GetAllFundings()
+        public List<Funding> GetAllFundings()
 		{
 			List<Funding> result = new List<Funding>();
 
@@ -45,40 +46,5 @@ namespace MyPaperProject.Database
 
 			return result;
 		}
-
-        public string GetFundingById(int id)
-        {
-            string funding = string.Empty;
-
-            try
-            {
-                DbAccessPostgre db = new DbAccessPostgre();
-
-                using (NpgsqlCommand cmd = new NpgsqlCommand())
-                {
-                    cmd.CommandText = @"SELECT name FROM fundings " +
-                                      @"WHERE id = @Id;";
-
-					cmd.Parameters.AddWithValue("@Id", id);
-
-                    using (cmd.Connection = db.OpenConnection())
-                    using (NpgsqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            if (reader["name"] != DBNull.Value)
-                                funding = reader["name"].ToString();
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Log.Add(LogType.error, "[DbFundingPostgre.GetFundingById]: " + ex.Message);
-            }
-
-            return funding;
-        }
     }
 }

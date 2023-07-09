@@ -6,7 +6,9 @@ namespace MyPaperProject.Controllers
 {
 	public class AreaController : Controller
 	{
-		[HttpPost]
+        #region Public Methods
+
+        [HttpPost]
 		public JsonResult GetAllAreas()
 		{
 			DbAreaPostgre dbArea = new DbAreaPostgre();
@@ -25,5 +27,7 @@ namespace MyPaperProject.Controllers
 
 			return Json(subareas);
 		}
-	}
+
+        #endregion
+    }
 }

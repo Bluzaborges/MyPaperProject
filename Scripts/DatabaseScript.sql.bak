@@ -85,7 +85,7 @@ CREATE TABLE results (
 	description TEXT,
 	creation_date TIMESTAMP,
 	deleted BOOLEAN DEFAULT false,
-	deleted_date TIMESTAMP
+	deleted_date DATE
 );
 
 DROP TABLE IF EXISTS attachments;
