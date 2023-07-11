@@ -1,3 +1,6 @@
 MyPaperProject/bin/
 MyPaperProject/obj/
 .vs/
+
+MyPaperProject.UnitTests/bin/
+MyPaperProject.UnitTests/obj/

@@ -397,7 +397,7 @@ namespace MyPaperProject.Database
 				using (NpgsqlCommand cmd = new NpgsqlCommand())
 				{
 					cmd.CommandText = @"SELECT COUNT(*) FROM researchers " +
-									  @"WHERE name = @Name OR cpf = @Cpf;";
+									  @"WHERE (name = @Name OR cpf = @Cpf) AND deleted = false;";
 
 					cmd.Parameters.AddWithValue("@Name", name);
 					cmd.Parameters.AddWithValue("@Cpf", cpf);
