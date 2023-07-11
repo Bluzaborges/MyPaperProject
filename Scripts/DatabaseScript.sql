@@ -54,7 +54,7 @@ CREATE TABLE projects(
 	ended BOOLEAN,
 	ended_date TIMESTAMP,
 	creation_date TIMESTAMP,
-	deleted BOOLEAN,
+	deleted BOOLEAN DEFAULT false,
 	deleted_date TIMESTAMP
 );
 
